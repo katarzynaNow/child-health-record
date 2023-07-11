@@ -33,3 +33,4 @@ build/
 .vscode/
 /src/main/resources/db.properties
 /src/main/resources/db-postgres.properties
+/.mvn/
