@@ -6,14 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class DiseaseRegisterController {
-
-    @Value("${app.title.disease}")
+public class AppointmentsController {
+    @Value("${app.title.appointments}")
     private String title;
 
-    @GetMapping("/diseaseRegister")
+    @GetMapping("/appointments")
     public String diseaseRegisterPage(Model model){
         model.addAttribute("title", title);
-        return "diseaseRegister";
+        return "appointments";
     }
 }
