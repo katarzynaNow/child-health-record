@@ -16,4 +16,9 @@ public class DiseaseRegisterController {
         model.addAttribute("title", title);
         return "diseaseRegister";
     }
+
+    @GetMapping("/")
+    public String showIndex(){
+        return "redirect:diseaseRegister";
+    }
 }
