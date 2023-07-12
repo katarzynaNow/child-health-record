@@ -5,13 +5,12 @@ import com.example.childhealthrecord.service.DiseaseService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/diseaseRegister")
 public class DiseaseRegisterController {
 
     @Value("${app.title.disease}")
@@ -23,41 +22,42 @@ public class DiseaseRegisterController {
         this.diseaseService = diseaseService;
     }
 
-    @GetMapping("/diseaseRegister")
-    public String diseaseRegisterPage(Model model){
+    @GetMapping
+    public String diseaseRegisterPage(Model model, @RequestParam(required = false) Integer editedId){
         List<Disease> diseases = diseaseService.findAll();
 
         model.addAttribute("diseases", diseases);
         model.addAttribute("title", title);
+        model.addAttribute("editedId", editedId);
+
+        if(editedId != null) {
+            model.addAttribute("editDisease", diseaseService.findById(editedId));
+        }
+
         return "diseaseRegister";
     }
 
-    @GetMapping("/")
-    public String showIndex(){
-        return "redirect:diseaseRegister";
-    }
-
-    @GetMapping("/diseaseRegister/create")
+    @GetMapping("/create")
     public String create (Model model){
         Disease newDisease = new Disease();
         model.addAttribute("newDisease", newDisease);
         return "createDisease";
     }
 
-    @PostMapping("/diseaseRegister/create")
+    @PostMapping("/create")
     public String createAction(Disease newDisease){
         newDisease.setId(null);
         diseaseService.save(newDisease);
         return "redirect:/diseaseRegister";
     }
 
-    @GetMapping("/diseaseRegister/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id){
         diseaseService.deleteById(id);
         return "redirect:/diseaseRegister";
     }
 
-    @PostMapping("/diseaseRegister/edit/{id}")
+    @PostMapping("/edit/{id}")
     public String edit(Disease disease, @PathVariable Integer id) {
     Disease existing = diseaseService.findById(id);
     existing.setName(disease.getName());

@@ -28,7 +28,7 @@ public class DiseaseService {
     }
 
     public Disease findById(Integer id){
-        return diseaseRepository.findById(id).orElse(null);
+        return diseaseRepository.findById(id).get();
     }
 
 }

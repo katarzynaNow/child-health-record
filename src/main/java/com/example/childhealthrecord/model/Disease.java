@@ -3,11 +3,10 @@ package com.example.childhealthrecord.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="Disease")
 public class Disease {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private java.lang.String name;
