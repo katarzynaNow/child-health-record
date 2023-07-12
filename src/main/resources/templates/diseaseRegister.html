@@ -21,7 +21,8 @@
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Duration in days</th>
+              <th>Starting date</th>
+              <th>Ending date</th>
               <th>Symptoms</th>
               <th>Actions</th>
             </tr>
@@ -31,7 +32,8 @@
               <div th:if="${d.getId() != editedId}">
                 <td th:text="${d.getId()}"></td>
                 <td th:text="${d.getName()}"></td>
-                <td th:text="${d.getDurationDays()}"></td>
+                <td th:text="${d.getStartingDate()}"></td>
+                <td th:text="${d.getEndingDate()}"></td>
                 <td th:text="${d.getSymptoms()}"></td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/diseaseRegister(editedId=${d.getId()})}">Edit</a>
@@ -42,7 +44,8 @@
                 <form method="post" th:action="@{/diseaseRegister/edit/{id}(id=${editDisease.getId()})}" th:object="${editDisease}">
                   <td><input class="form-control" type="number" th:field="*{id}" disabled> </td>
                   <td><input class="form-control" type="text" th:field="*{name}"></td>
-                  <td><input class="form-control" type="number" th:field="*{durationDays}"></td>
+                  <td><input class="form-control" type="date" th:field="*{startingDate}"></td>
+                  <td><input class="form-control" type="date" th:field="*{endingDate}"></td>
                   <td><input class="form-control" type="text" th:field="*{symptoms}"></td>
                   <td><input class="form-control btn btn-primary" type="submit" value="Submit"></td>
                 </form>

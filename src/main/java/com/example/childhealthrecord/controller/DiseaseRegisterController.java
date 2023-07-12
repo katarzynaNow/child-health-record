@@ -61,7 +61,8 @@ public class DiseaseRegisterController {
     public String edit(Disease disease, @PathVariable Integer id) {
     Disease existing = diseaseService.findById(id);
     existing.setName(disease.getName());
-    existing.setDurationDays(disease.getDurationDays());
+    existing.setStartingDate(disease.getStartingDate());
+    existing.setEndingDate(disease.getEndingDate());
     existing.setSymptoms(disease.getSymptoms());
     diseaseService.save(existing);
     return "redirect:/diseaseRegister";

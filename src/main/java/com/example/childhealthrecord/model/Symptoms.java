@@ -1,6 +1,6 @@
 package com.example.childhealthrecord.model;
 
-public enum String {
+public enum Symptoms {
     FEVER,
     COUGH,
     SORE_THROAT,

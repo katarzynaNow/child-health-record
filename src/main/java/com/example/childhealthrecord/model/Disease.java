@@ -9,19 +9,20 @@ public class Disease {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private java.lang.String name;
+    private String name;
 
-    private int durationDays;
+    private String startingDate;
+    private String endingDate;
 
-    private java.lang.String symptoms;
+    private String symptoms;
 
     public Disease() {
     }
 
-    public Disease(Integer id, java.lang.String name, int durationDats, java.lang.String symptoms) {
-        this.id = id;
+    public Disease(String name, String startingDate, String endingDate, String symptoms) {
         this.name = name;
-        this.durationDays = durationDats;
+        this.startingDate = startingDate;
+        this.endingDate = endingDate;
         this.symptoms = symptoms;
     }
 
@@ -33,28 +34,36 @@ public class Disease {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getDurationDays() {
-        return durationDays;
-    }
 
-    public void setDurationDays(int durationDats) {
-        this.durationDays = durationDats;
-    }
-
-    public java.lang.String getSymptoms() {
+    public String getSymptoms() {
         return symptoms;
     }
 
-    public void setSymptoms(java.lang.String symptoms) {
+    public void setSymptoms(String symptoms) {
         this.symptoms = symptoms;
     }
 
+    public String getStartingDate() {
+        return startingDate;
+    }
+
+    public void setStartingDate(String startingDate) {
+        this.startingDate = startingDate;
+    }
+
+    public String getEndingDate() {
+        return endingDate;
+    }
+
+    public void setEndingDate(String endingDate) {
+        this.endingDate = endingDate;
+    }
 }
