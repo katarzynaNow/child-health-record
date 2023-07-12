@@ -15,7 +15,20 @@ public class DiseaseService {
         this.diseaseRepository = diseaseRepository;
     }
 
-    public List<Disease> findAll(){
+    public List<Disease> findAll() {
         return diseaseRepository.findAll();
     }
+
+    public void save (Disease disease){
+        diseaseRepository.save(disease);
+    }
+
+    public void deleteById(Integer id){
+        diseaseRepository.deleteById(id);
+    }
+
+    public Disease findById(Integer id){
+        return diseaseRepository.findById(id).orElse(null);
+    }
+
 }

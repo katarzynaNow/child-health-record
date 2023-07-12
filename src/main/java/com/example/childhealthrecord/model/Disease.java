@@ -10,19 +10,19 @@ public class Disease {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String name;
+    private java.lang.String name;
 
-    private int durationDats;
+    private int durationDays;
 
-    private Symptoms symptoms;
+    private java.lang.String symptoms;
 
     public Disease() {
     }
 
-    public Disease(Integer id, String name, int durationDats, Symptoms symptoms) {
+    public Disease(Integer id, java.lang.String name, int durationDats, java.lang.String symptoms) {
         this.id = id;
         this.name = name;
-        this.durationDats = durationDats;
+        this.durationDays = durationDats;
         this.symptoms = symptoms;
     }
 
@@ -34,27 +34,28 @@ public class Disease {
         this.id = id;
     }
 
-    public String getName() {
+    public java.lang.String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(java.lang.String name) {
         this.name = name;
     }
 
-    public int getDurationDats() {
-        return durationDats;
+    public int getDurationDays() {
+        return durationDays;
     }
 
-    public void setDurationDats(int durationDats) {
-        this.durationDats = durationDats;
+    public void setDurationDays(int durationDats) {
+        this.durationDays = durationDats;
     }
 
-    public Symptoms getSymptoms() {
+    public java.lang.String getSymptoms() {
         return symptoms;
     }
 
-    public void setSymptoms(Symptoms symptoms) {
+    public void setSymptoms(java.lang.String symptoms) {
         this.symptoms = symptoms;
     }
+
 }
