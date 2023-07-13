@@ -14,7 +14,43 @@
         <div class="col-md-12">
 
           <h1 th:text="${title}"></h1>
+          <br><br>
 
+          <table class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Diagnosis</th>
+              <th>Medicines</th>
+              <th>Antibiotic</th>
+              <th>Notes</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="a: ${appointments}">
+              <div th:if="${a.getId() != editedId}">
+                <td th:text="${a.getId()}"></td>
+                <td th:text="${#temporals.format(a.getDate(), 'dd-MM-yyyy')}"></td>
+                <td th:text="${a.getDiagnosis()}"></td>
+                <td th:text="${a.getMedicines()}"></td>
+                <td th:text="${a.getAntibiotic()}"></td>
+                <td th:text="${a.getNotes()}"></td>
+                <td class="row actions">
+                  <a class="btn btn-primary btn-sm col" th:href="@{/appointments(editedId=${a.getId()})}">Edit</a>
+                  <a class="btn btn-secondary btn-sm col" th:href="@{/appointments/delete/{id}(id=${a.getId()})}">Delete</a>
+                </td>
+              </div>
+
+
+            </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="row col-2">
+            <a class="btn btn-primary" th:href="@{/appointments/create}">Create new entry</a>
+          </div>
 
         </div>
       </div>

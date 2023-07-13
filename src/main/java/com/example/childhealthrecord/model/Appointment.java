@@ -21,9 +21,9 @@ public class Appointment {
 
     private String notes;
 
-    @ManyToOne
-    @JoinColumn
-    private Disease disease;
+   //@ManyToOne
+    //@JoinColumn
+    //private Disease disease;
 
 
     public Appointment() {
@@ -85,11 +85,11 @@ public class Appointment {
         this.notes = notes;
     }
 
-    public Disease getDisease() {
+   /* public Disease getDisease() {
         return disease;
     }
 
     public void setDisease(Disease disease) {
         this.disease = disease;
-    }
+    }*/
 }

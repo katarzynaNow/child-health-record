@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title th:text="${title}">"</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+  <section class="my-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+          <h1 th:text="${title}"></h1>
+
+          <form method="post" th:action="@{/appointments/create}" th:object="${newAppointment}">
+            <div class="form-group">
+              <label>Date: </label>
+              <input class="form-control" type="date" th:field="*{date}">
+            </div>
+            <div class="form-group">
+              <label>Diagnosis: </label>
+              <input class="form-control" type="text" th:field="*{diagnosis}" >
+            </div>
+            <div class="form-group">
+              <label>Medicines: </label>
+              <input class="form-control" type="text" th:field="*{medicines}" >
+            </div>
+            <div class="form-group">
+              <label>Antibiotic (select form the list): </label>
+              <select class="form-control" th:field="*{antibiotic}">
+                <option th:each="an: ${antibiotics}" th:value="${an}" th:text="${an}"></option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Notes: </label>
+              <input class="form-control" type="text" th:field="*{notes}" >
+            </div>
+            <br>
+            <div class="row col-3">
+              <input class="form-control btn btn-primary col-9" type="submit" value="Submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
