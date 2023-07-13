@@ -29,8 +29,10 @@
               <input class="form-control" type="date" th:field="*{endingDate}">
             </div>
             <div class="form-group">
-              <label>Symptoms: </label>
-              <input class="form-control" type="text" th:field="*{symptoms}">
+              <label>Symptoms (select form the list): </label>
+              <select class="form-control" th:field="*{symptom}">
+              <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+              </select>
             </div>
             <br>
             <div class="row col-3">

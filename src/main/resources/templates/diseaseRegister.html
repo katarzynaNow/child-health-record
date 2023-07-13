@@ -34,7 +34,7 @@
                 <td th:text="${d.getName()}"></td>
                 <td th:text="${#temporals.format(d.getStartingDate(), 'dd-MM-yyy')}"></td>
                 <td th:text="${#temporals.format(d.getEndingDate(), 'dd-MM-yyy')}"></td>
-                <td th:text="${d.getSymptoms()}"></td>
+                <td th:text="${d.getSymptom()}"></td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/diseaseRegister(editedId=${d.getId()})}">Edit</a>
                   <a class="btn btn-secondary btn-sm col" th:href="@{/diseaseRegister/delete/{id}(id=${d.getId()})}">Delete</a>
@@ -46,7 +46,7 @@
                   <td><input class="form-control" type="text" th:field="*{name}"></td>
                   <td><input class="form-control" type="date" th:field="*{startingDate}"></td>
                   <td><input class="form-control" type="date" th:field="*{endingDate}"></td>
-                  <td><input class="form-control" type="text" th:field="*{symptoms}"></td>
+                  <td><input class="form-control" type="text" th:field="*{symptom}"></td>
                   <td><input class="form-control btn btn-primary" type="submit" value="Submit"></td>
                 </form>
               </div>

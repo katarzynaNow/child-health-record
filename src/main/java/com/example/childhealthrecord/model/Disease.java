@@ -18,7 +18,7 @@ public class Disease {
     private Instant startingDate;
     private Instant endingDate;
 
-    private String symptoms;
+    private Symptom symptom;
 
     @CreationTimestamp
     private Instant createdAt;
@@ -29,11 +29,11 @@ public class Disease {
     public Disease() {
     }
 
-    public Disease(String name, Instant startingDate, Instant endingDate, String symptoms) {
+    public Disease(String name, Instant startingDate, Instant endingDate, Symptom symptoms) {
         this.name = name;
         this.startingDate = startingDate;
         this.endingDate = endingDate;
-        this.symptoms = symptoms;
+        this.symptom = symptoms;
     }
 
     public Integer getId() {
@@ -53,12 +53,12 @@ public class Disease {
     }
 
 
-    public String getSymptoms() {
-        return symptoms;
+    public Symptom getSymptom() {
+        return symptom;
     }
 
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
+    public void setSymptom(Symptom symptoms) {
+        this.symptom = symptoms;
     }
 
     public Instant getStartingDate() {

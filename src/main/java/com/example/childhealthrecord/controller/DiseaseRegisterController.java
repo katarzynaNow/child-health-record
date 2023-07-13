@@ -1,6 +1,7 @@
 package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.model.Disease;
+import com.example.childhealthrecord.model.Symptom;
 import com.example.childhealthrecord.service.DiseaseService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -40,7 +41,10 @@ public class DiseaseRegisterController {
     @GetMapping("/create")
     public String create (Model model){
         Disease newDisease = new Disease();
+        Symptom[] symptoms = Symptom.values();
+
         model.addAttribute("newDisease", newDisease);
+        model.addAttribute("symptoms", symptoms);
         return "createDisease";
     }
 
@@ -63,7 +67,7 @@ public class DiseaseRegisterController {
     existing.setName(disease.getName());
     existing.setStartingDate(disease.getStartingDate());
     existing.setEndingDate(disease.getEndingDate());
-    existing.setSymptoms(disease.getSymptoms());
+    existing.setSymptom(disease.getSymptom());
     diseaseService.save(existing);
     return "redirect:/diseaseRegister";
     }
