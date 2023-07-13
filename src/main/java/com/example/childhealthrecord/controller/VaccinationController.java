@@ -11,7 +11,7 @@ public class VaccinationController {
     private String title;
 
     @GetMapping("/vaccination")
-    public String diseaseRegisterPage(Model model){
+    public String vaccinationSchedulePage(Model model){
         model.addAttribute("title", title);
         return "vaccination";
     }

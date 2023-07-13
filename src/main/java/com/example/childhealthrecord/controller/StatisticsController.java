@@ -11,7 +11,7 @@ public class StatisticsController {
     private String title;
 
     @GetMapping("/statistics")
-    public String diseaseRegisterPage(Model model){
+    public String statisticsPage(Model model){
         model.addAttribute("title", title);
         return "statistics";
     }
