@@ -32,8 +32,8 @@
               <div th:if="${d.getId() != editedId}">
                 <td th:text="${d.getId()}"></td>
                 <td th:text="${d.getName()}"></td>
-                <td th:text="${d.getStartingDate()}"></td>
-                <td th:text="${d.getEndingDate()}"></td>
+                <td th:text="${#temporals.format(d.getStartingDate(), 'dd-MM-yyy')}"></td>
+                <td th:text="${#temporals.format(d.getEndingDate(), 'dd-MM-yyy')}"></td>
                 <td th:text="${d.getSymptoms()}"></td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/diseaseRegister(editedId=${d.getId()})}">Edit</a>

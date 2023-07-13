@@ -1,6 +1,10 @@
 package com.example.childhealthrecord.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
 
 @Entity
 public class Disease {
@@ -11,15 +15,21 @@ public class Disease {
 
     private String name;
 
-    private String startingDate;
-    private String endingDate;
+    private Instant startingDate;
+    private Instant endingDate;
 
     private String symptoms;
+
+    @CreationTimestamp
+    private Instant createdAt;
+
+    @UpdateTimestamp
+    private Instant updatedAt;
 
     public Disease() {
     }
 
-    public Disease(String name, String startingDate, String endingDate, String symptoms) {
+    public Disease(String name, Instant startingDate, Instant endingDate, String symptoms) {
         this.name = name;
         this.startingDate = startingDate;
         this.endingDate = endingDate;
@@ -51,19 +61,35 @@ public class Disease {
         this.symptoms = symptoms;
     }
 
-    public String getStartingDate() {
+    public Instant getStartingDate() {
         return startingDate;
     }
 
-    public void setStartingDate(String startingDate) {
+    public void setStartingDate(Instant startingDate) {
         this.startingDate = startingDate;
     }
 
-    public String getEndingDate() {
+    public Instant getEndingDate() {
         return endingDate;
     }
 
-    public void setEndingDate(String endingDate) {
+    public void setEndingDate(Instant endingDate) {
         this.endingDate = endingDate;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
