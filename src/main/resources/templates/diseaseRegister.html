@@ -23,7 +23,9 @@
               <th>Name</th>
               <th>Starting date</th>
               <th>Ending date</th>
-              <th>Symptoms</th>
+              <th>Symptom 1</th>
+              <th>Symptom 2</th>
+              <th>Symptom 3</th>
               <th>Actions</th>
             </tr>
             </thead>
@@ -34,7 +36,9 @@
                 <td th:text="${d.getName()}"></td>
                 <td th:text="${#temporals.format(d.getStartingDate(), 'dd-MM-yyy')}"></td>
                 <td th:text="${#temporals.format(d.getEndingDate(), 'dd-MM-yyy')}"></td>
-                <td th:text="${d.getSymptom()}"></td>
+                <td th:text="${d.getSymptom1()}"></td>
+                <td th:text="${d.getSymptom2()}"></td>
+                <td th:text="${d.getSymptom3()}"></td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/diseaseRegister(editedId=${d.getId()})}">Edit</a>
                   <a class="btn btn-secondary btn-sm col" th:href="@{/diseaseRegister/delete/{id}(id=${d.getId()})}">Delete</a>
@@ -46,7 +50,21 @@
                   <td><input class="form-control" type="text" th:field="*{name}"></td>
                   <td><input class="form-control" type="date" th:field="*{startingDate}"></td>
                   <td><input class="form-control" type="date" th:field="*{endingDate}"></td>
-                  <td><input class="form-control" type="text" th:field="*{symptom}"></td>
+                  <td>
+                    <select class="form-control" th:field="*{symptom1}">
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+                    </select>
+                  </td>
+                  <td>
+                    <select class="form-control" th:field="*{symptom2}">
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+                    </select>
+                  </td>
+                  <td>
+                    <select class="form-control" th:field="*{symptom3}">
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+                    </select>
+                  </td>
                   <td><input class="form-control btn btn-primary" type="submit" value="Submit"></td>
                 </form>
               </div>

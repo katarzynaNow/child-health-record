@@ -64,10 +64,14 @@ public class DiseaseRegisterController {
     @PostMapping("/edit/{id}")
     public String edit(Disease disease, @PathVariable Integer id) {
     Disease existing = diseaseService.findById(id);
+
     existing.setName(disease.getName());
     existing.setStartingDate(disease.getStartingDate());
     existing.setEndingDate(disease.getEndingDate());
-    existing.setSymptom(disease.getSymptom());
+    existing.setSymptom1(disease.getSymptom1());
+    existing.setSymptom2(disease.getSymptom2());
+    existing.setSymptom3(disease.getSymptom3());
+
     diseaseService.save(existing);
     return "redirect:/diseaseRegister";
     }

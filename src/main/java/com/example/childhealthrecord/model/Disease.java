@@ -17,8 +17,14 @@ public class Disease {
 
     private Instant startingDate;
     private Instant endingDate;
+    @Enumerated(EnumType.STRING)
+    private Symptom symptom1;
 
-    private Symptom symptom;
+    @Enumerated(EnumType.STRING)
+    private Symptom symptom2;
+
+    @Enumerated(EnumType.STRING)
+    private Symptom symptom3;
 
     @CreationTimestamp
     private Instant createdAt;
@@ -29,11 +35,14 @@ public class Disease {
     public Disease() {
     }
 
-    public Disease(String name, Instant startingDate, Instant endingDate, Symptom symptoms) {
+    public Disease(String name, Instant startingDate, Instant endingDate, Symptom symptom1,
+                   Symptom symptom2, Symptom symptom3) {
         this.name = name;
         this.startingDate = startingDate;
         this.endingDate = endingDate;
-        this.symptom = symptoms;
+        this.symptom1 = symptom1;
+        this.symptom2 = symptom2;
+        this.symptom3 = symptom3;
     }
 
     public Integer getId() {
@@ -52,13 +61,28 @@ public class Disease {
         this.name = name;
     }
 
-
-    public Symptom getSymptom() {
-        return symptom;
+    public Symptom getSymptom1() {
+        return symptom1;
     }
 
-    public void setSymptom(Symptom symptoms) {
-        this.symptom = symptoms;
+    public void setSymptom1(Symptom symptom1) {
+        this.symptom1 = symptom1;
+    }
+
+    public Symptom getSymptom2() {
+        return symptom2;
+    }
+
+    public void setSymptom2(Symptom symptom2) {
+        this.symptom2 = symptom2;
+    }
+
+    public Symptom getSymptom3() {
+        return symptom3;
+    }
+
+    public void setSymptom3(Symptom symptom3) {
+        this.symptom3 = symptom3;
     }
 
     public Instant getStartingDate() {
