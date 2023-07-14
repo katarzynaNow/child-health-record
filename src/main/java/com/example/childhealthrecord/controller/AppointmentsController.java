@@ -25,10 +25,12 @@ public class AppointmentsController {
     @GetMapping
     public String appointmentsPage(Model model, @RequestParam(required = false) Integer editedId){
         List<Appointment> appointments = appointmentService.findAll();
+        Antibiotic[] antibiotics = Antibiotic.values();
 
         model.addAttribute("title", title);
         model.addAttribute("appointments", appointments);
         model.addAttribute("editedId", editedId);
+        model.addAttribute("antibiotics", antibiotics);
 
         if(editedId != null){
             model.addAttribute("editAppointment", appointmentService.findById(editedId));
@@ -63,17 +65,8 @@ public class AppointmentsController {
          return "redirect:/appointments";
      }
 
-     /*@GetMapping("/edit/{id}")
-     public String edit(Model model, @PathVariable Integer id){
-         Antibiotic[] antibiotics = Antibiotic.values();
-         model.addAttribute("antibiotics", antibiotics);
-
-         return "createAppointment";
-     }*/
-
-
      @PostMapping("/edit/{id}")
-     public String editPost( Appointment appointment, @PathVariable Integer id){
+     public String edit( Appointment appointment, @PathVariable Integer id){
         Appointment existing = appointmentService.findById(id);
 
         existing.setDate(appointment.getDate());
@@ -82,7 +75,8 @@ public class AppointmentsController {
         existing.setAntibiotic(appointment.getAntibiotic());
         existing.setNotes(appointment.getNotes());
 
+        appointmentService.save(existing);
+
         return "redirect:/appointments";
      }
-
 }

@@ -1,26 +1,13 @@
 package com.example.childhealthrecord.model;
 
 public enum Symptom {
-    FEVER("fever"),
-    COUGH("cough"),
-    SORE_THROAT("sore throat"),
-    CHILLS("chills"),
-    RASH("rash"),
-    RUNNY_NOSE("runny nose"),
-    DIARRHEA("diarrhea"),
-    VOMITING("vomiting");
+    FEVER,
+    COUGH,
+    SORE_THROAT,
+    CHILLS,
+    RASH,
+    RUNNY_NOSE,
+    DIARRHEA,
+    VOMITING;
 
-    String name;
-
-    Symptom(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

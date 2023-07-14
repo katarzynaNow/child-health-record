@@ -26,9 +26,11 @@ public class DiseaseRegisterController {
     @GetMapping
     public String diseaseRegisterPage(Model model, @RequestParam(required = false) Integer editedId){
         List<Disease> diseases = diseaseService.findAll();
+        Symptom[] symptoms = Symptom.values();
 
         model.addAttribute("diseases", diseases);
         model.addAttribute("title", title);
+        model.addAttribute("symptoms", symptoms);
         model.addAttribute("editedId", editedId);
 
         if(editedId != null) {

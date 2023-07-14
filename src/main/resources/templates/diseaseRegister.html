@@ -34,9 +34,9 @@
                 <td th:text="${d.getName()}"></td>
                 <td th:text="${#temporals.format(d.getStartingDate(), 'dd-MM-yyy')}"></td>
                 <td th:text="${#temporals.format(d.getEndingDate(), 'dd-MM-yyy')}"></td>
-                <td th:text="${d.getSymptom1().getName()}"></td>
-                <td th:text="${d.getSymptom2().getName()}"></td>
-                <td th:text="${d.getSymptom3().getName()}"></td>
+                <td th:text="${d.getSymptom1()}"></td>
+                <td th:text="${d.getSymptom2()}"></td>
+                <td th:text="${d.getSymptom3()}"></td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/diseaseRegister(editedId=${d.getId()})}">Edit</a>
                   <a class="btn btn-secondary btn-sm col" th:href="@{/diseaseRegister/delete/{id}(id=${d.getId()})}">Delete</a>

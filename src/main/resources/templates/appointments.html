@@ -35,7 +35,7 @@
                 <td th:text="${#temporals.format(a.getDate(), 'dd-MM-yyyy')}"></td>
                 <td th:text="${a.getDiagnosis()}"></td>
                 <td th:text="${a.getMedicines()}"></td>
-                <td th:text="${a.getAntibiotic().getName()}"></td>
+                <td th:text="${a.getAntibiotic()}"></td>
                 <td th:text="${a.getNotes()}"></td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/appointments(editedId=${a.getId()})}">Edit</a>
