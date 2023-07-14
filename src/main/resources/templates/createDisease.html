@@ -31,19 +31,19 @@
             <div class="form-group">
               <label>Symptom 1 (select form the list): </label>
               <select class="form-control" th:field="*{symptom1}">
-              <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+              <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
               </select>
             </div>
             <div class="form-group">
               <label>Symptom 2 (select form the list): </label>
               <select class="form-control" th:field="*{symptom2}">
-                <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+                <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
               </select>
             </div>
             <div class="form-group">
               <label>Symptom 3 (select form the list): </label>
               <select class="form-control" th:field="*{symptom3}">
-                <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+                <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
               </select>
             </div>
             <br>

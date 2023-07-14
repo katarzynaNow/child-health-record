@@ -34,9 +34,9 @@
                 <td th:text="${d.getName()}"></td>
                 <td th:text="${#temporals.format(d.getStartingDate(), 'dd-MM-yyy')}"></td>
                 <td th:text="${#temporals.format(d.getEndingDate(), 'dd-MM-yyy')}"></td>
-                <td th:text="${d.getSymptom1()}"></td>
-                <td th:text="${d.getSymptom2()}"></td>
-                <td th:text="${d.getSymptom3()}"></td>
+                <td th:text="${#strings.toLowerCase(d.getSymptom1())}"></td>
+                <td th:text="${#strings.toLowerCase(d.getSymptom2())}"></td>
+                <td th:text="${#strings.toLowerCase(d.getSymptom3())}"></td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/diseaseRegister(editedId=${d.getId()})}">Edit</a>
                   <a class="btn btn-secondary btn-sm col" th:href="@{/diseaseRegister/delete/{id}(id=${d.getId()})}">Delete</a>
@@ -50,17 +50,17 @@
                   <td><input class="form-control" type="date" th:field="*{endingDate}"></td>
                   <td>
                     <select class="form-control" th:field="*{symptom1}">
-                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
                     </select>
                   </td>
                   <td>
                     <select class="form-control" th:field="*{symptom2}">
-                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
                     </select>
                   </td>
                   <td>
                     <select class="form-control" th:field="*{symptom3}">
-                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s}"></option>
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
                     </select>
                   </td>
                   <td><input class="form-control btn btn-primary" type="submit" value="Submit"></td>
