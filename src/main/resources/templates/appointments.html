@@ -35,7 +35,7 @@
                 <td th:text="${#temporals.format(a.getDate(), 'dd-MM-yyyy')}"></td>
                 <td th:text="${a.getDiagnosis()}"></td>
                 <td th:text="${a.getMedicines()}"></td>
-                <td th:text="${a.getAntibiotic()}"></td>
+                <td th:text="${a.getAntibiotic().getName()}"></td>
                 <td th:text="${a.getNotes()}"></td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/appointments(editedId=${a.getId()})}">Edit</a>
@@ -48,7 +48,11 @@
                   <td><input class="form-control" type="date" th:field="*{date}"></td>
                   <td><input class="form-control" type="text" th:field="*{diagnosis}"></td>
                   <td><input class="form-control" type="text" th:field="*{medicines}"></td>
-                  <td><input class="form-control" type="text" th:field="*{antibiotic}"></td>
+                  <td>
+                    <select class="form-control" th:field="*{antibiotic}">
+                      <option th:each="an: ${antibiotics}" th:value="${an}" th:text="${an}"></option>
+                    </select>
+                  </td>
                   <td><input class="form-control" type="text" th:field="*{notes}"></td>
                   <td><input class="form-control btn btn-primary" type="submit" value="Submit"></td>
                 </form>

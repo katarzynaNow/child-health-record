@@ -63,8 +63,17 @@ public class AppointmentsController {
          return "redirect:/appointments";
      }
 
+     /*@GetMapping("/edit/{id}")
+     public String edit(Model model, @PathVariable Integer id){
+         Antibiotic[] antibiotics = Antibiotic.values();
+         model.addAttribute("antibiotics", antibiotics);
+
+         return "createAppointment";
+     }*/
+
+
      @PostMapping("/edit/{id}")
-     public String edit( Appointment appointment, @PathVariable Integer id){
+     public String editPost( Appointment appointment, @PathVariable Integer id){
         Appointment existing = appointmentService.findById(id);
 
         existing.setDate(appointment.getDate());
@@ -73,9 +82,7 @@ public class AppointmentsController {
         existing.setAntibiotic(appointment.getAntibiotic());
         existing.setNotes(appointment.getNotes());
 
-        appointmentService.save(existing);
-
-         return "redirect:/appointments";
+        return "redirect:/appointments";
      }
 
 }
