@@ -42,8 +42,17 @@
                   <a class="btn btn-secondary btn-sm col" th:href="@{/appointments/delete/{id}(id=${a.getId()})}">Delete</a>
                 </td>
               </div>
-
-
+              <div th:unless="${a.getId() != editedId}">
+                <form method="post" th:action="@{/appointments/edit/{id}(id=${editAppointment.getId()})}" th:object="${editAppointment}">
+                  <td><input class="form-control" type="number" th:field="*{id}" disabled> </td>
+                  <td><input class="form-control" type="date" th:field="*{date}"></td>
+                  <td><input class="form-control" type="text" th:field="*{diagnosis}"></td>
+                  <td><input class="form-control" type="text" th:field="*{medicines}"></td>
+                  <td><input class="form-control" type="text" th:field="*{antibiotic}"></td>
+                  <td><input class="form-control" type="text" th:field="*{notes}"></td>
+                  <td><input class="form-control btn btn-primary" type="submit" value="Submit"></td>
+                </form>
+              </div>
             </tr>
             </tbody>
           </table>
