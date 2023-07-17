@@ -18,7 +18,7 @@
 
           <table class="table">
             <thead>
-            <tr>
+            <tr class="text-center">
               <th>#</th>
               <th>Date</th>
               <th>Diagnosis</th>
@@ -30,7 +30,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="a: ${appointments}">
+            <tr th:each="a: ${appointments}" class="text-center">
               <div th:if="${a.getId() != editedId}">
                 <td th:text="${a.getId()}"></td>
                 <td th:text="${#temporals.format(a.getDate(), 'dd-MM-yyyy')}"></td>

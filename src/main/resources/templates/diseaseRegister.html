@@ -18,18 +18,18 @@
 
           <table class="table">
             <thead>
-            <tr>
+            <tr class="text-center">
               <th>#</th>
               <th>Name</th>
               <th>Starting date</th>
               <th>Ending date</th>
               <th colspan="3">Symptoms</th>
-              <th>Medical appointment</th>
+              <th>Appointment</th>
               <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="d : ${diseases}">
+            <tr th:each="d : ${diseases}" class="text-center">
               <div th:if="${d.getId() != editedId}">
                 <td th:text="${d.getId()}"></td>
                 <td th:text="${d.getName()}"></td>
