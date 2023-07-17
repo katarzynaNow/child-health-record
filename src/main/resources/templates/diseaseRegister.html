@@ -24,6 +24,7 @@
               <th>Starting date</th>
               <th>Ending date</th>
               <th colspan="3">Symptoms</th>
+              <th>Medical appointment</th>
               <th>Actions</th>
             </tr>
             </thead>
@@ -37,6 +38,10 @@
                 <td th:text="${#strings.toLowerCase(d.getSymptom1())}"></td>
                 <td th:text="${#strings.toLowerCase(d.getSymptom2())}"></td>
                 <td th:text="${#strings.toLowerCase(d.getSymptom3())}"></td>
+                <td>
+                  <span th:if="${d.getAppointments().isEmpty() == true}" th:text="no"></span>
+                  <span th:unless="${d.getAppointments().isEmpty() == true}" th:text="yes"></span>
+                </td>
                 <td class="row actions">
                   <a class="btn btn-primary btn-sm col" th:href="@{/diseaseRegister(editedId=${d.getId()})}">Edit</a>
                   <a class="btn btn-secondary btn-sm col" th:href="@{/diseaseRegister/delete/{id}(id=${d.getId()})}">Delete</a>
@@ -63,6 +68,7 @@
                       <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
                     </select>
                   </td>
+                  <td><input class="form-control" type="text" th:field="*{appointments}" disabled> </td>
                   <td><input class="form-control btn btn-primary" type="submit" value="Submit"></td>
                 </form>
               </div>

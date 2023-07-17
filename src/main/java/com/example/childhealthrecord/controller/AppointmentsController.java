@@ -74,6 +74,7 @@ public class AppointmentsController {
         existing.setMedicines(appointment.getMedicines());
         existing.setAntibiotic(appointment.getAntibiotic());
         existing.setNotes(appointment.getNotes());
+        existing.setDisease(appointment.getDisease());
 
         appointmentService.save(existing);
 

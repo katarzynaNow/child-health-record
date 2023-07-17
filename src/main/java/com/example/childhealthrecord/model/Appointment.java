@@ -1,6 +1,8 @@
 package com.example.childhealthrecord.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -21,20 +23,28 @@ public class Appointment {
 
     private String notes;
 
-   //@ManyToOne
-    //@JoinColumn
-    //private Disease disease;
+    @CreationTimestamp
+    private Instant createdAt;
+
+    @UpdateTimestamp
+    private Instant updatedAt;
+
+   @ManyToOne
+   @JoinColumn
+   private Disease disease;
 
 
     public Appointment() {
     }
 
-    public Appointment(Instant date, String diagnosis, String medicines, Antibiotic antibiotic, String notes) {
+    public Appointment(Instant date, String diagnosis, String medicines, Antibiotic antibiotic, String notes,
+                       Disease disease) {
         this.date = date;
         this.diagnosis = diagnosis;
         this.medicines = medicines;
         this.antibiotic = antibiotic;
         this.notes = notes;
+        this.disease = disease;
     }
 
     public Integer getId() {
@@ -85,11 +95,27 @@ public class Appointment {
         this.notes = notes;
     }
 
-   /* public Disease getDisease() {
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Disease getDisease() {
         return disease;
     }
 
     public void setDisease(Disease disease) {
         this.disease = disease;
-    }*/
+    }
 }

@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 public class Disease {
@@ -31,6 +32,9 @@ public class Disease {
 
     @UpdateTimestamp
     private Instant updatedAt;
+
+    @OneToMany(mappedBy = "disease")
+    private List<Appointment> appointments;
 
     public Disease() {
     }
@@ -115,5 +119,26 @@ public class Disease {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    @Override
+    public String toString() {
+        return "Disease{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", startingDate=" + startingDate +
+                ", endingDate=" + endingDate +
+                ", symptom1=" + symptom1 +
+                ", symptom2=" + symptom2 +
+                ", symptom3=" + symptom3 +
+                '}';
     }
 }
