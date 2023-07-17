@@ -1,13 +1,12 @@
 package com.example.childhealthrecord.model;
 
 public enum Symptom {
-    FEVER,
-    COUGH,
-    SORE_THROAT,
     CHILLS,
+    COUGH,
+    DIARRHEA,
+    FEVER,
     RASH,
     RUNNY_NOSE,
-    DIARRHEA,
+    SORE_THROAT,
     VOMITING;
-
 }

@@ -1,6 +1,7 @@
 package com.example.childhealthrecord.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,7 +18,9 @@ public class Disease {
     private String name;
 
     private Instant startingDate;
+
     private Instant endingDate;
+
     @Enumerated(EnumType.STRING)
     private Symptom symptom1;
 

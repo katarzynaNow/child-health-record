@@ -6,6 +6,7 @@ import com.example.childhealthrecord.service.DiseaseService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public class DiseaseRegisterController {
     }
 
     @PostMapping("/create")
-    public String createAction(Disease newDisease){
+    public String createAction(Disease newDisease, BindingResult result){
         newDisease.setId(null);
         diseaseService.save(newDisease);
         return "redirect:/diseaseRegister";
