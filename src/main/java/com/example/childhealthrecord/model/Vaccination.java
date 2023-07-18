@@ -21,7 +21,8 @@ public class Vaccination {
     private String childrenAgeInMonths;
 
     @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private VacStatus status;
 
     @Column(name = "notes")
     private String notes;
@@ -58,11 +59,11 @@ public class Vaccination {
         this.childrenAgeInMonths = childrenAge;
     }
 
-    public String getStatus() {
+    public VacStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(VacStatus status) {
         this.status = status;
     }
 

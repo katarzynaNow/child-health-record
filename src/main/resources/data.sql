@@ -1,4 +1,4 @@
-INSERT INTO vaccinations (scope, childrenAgeInMonths, name, status, notes)
+INSERT INTO dbo.vaccinations (scope, childrenAgeInMonths, name, status, notes)
 VALUES ('mandatory', '0', 'Hepatitis B', 'TO_ARRANGE', ''),
         ('mandatory', '0', 'BCG', 'TO_ARRANGE', ''),
         ('mandatory', '2', '6in1', 'TO_ARRANGE', ''),
