@@ -15,6 +15,29 @@
 
                     <h1 th:text="${title}"></h1>
 
+                    <table class="table">
+                        <thead>
+                        <tr class="text-center">
+                            <th>Scope</th>
+                            <th>Age (in moths)</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="vacc : ${vaccinations}" class="text-center">
+                            <td th:text="${vacc.getScope()}"></td>
+                            <td th:text="${vacc.getChildrenAgeInMonths()}"></td>
+                            <td th:text="${vacc.getName()}"></td>
+                            <td th:text="${vacc.getStatus()}"></td>
+                            <td th:text="${vacc.getNotes()}"></td>
+                            <td th:text="actions"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
 
                 </div>
             </div>

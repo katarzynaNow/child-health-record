@@ -1,22 +1,30 @@
 package com.example.childhealthrecord.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "vaccinations")
 public class Vaccination {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "scope")
+    private String scope;
+
+    @Column(name = "name")
     private String name;
 
-    private int childrenAge;
+    @Column(name = "childrenAgeInMonths")
+    private String childrenAgeInMonths;
 
-    private VacStatus status;
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "notes")
+    private String notes;
 
     public Integer getId() {
         return id;
@@ -24,6 +32,14 @@ public class Vaccination {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
     }
 
     public String getName() {
@@ -34,19 +50,27 @@ public class Vaccination {
         this.name = name;
     }
 
-    public int getChildrenAge() {
-        return childrenAge;
+    public String getChildrenAgeInMonths() {
+        return childrenAgeInMonths;
     }
 
-    public void setChildrenAge(int childrenAge) {
-        this.childrenAge = childrenAge;
+    public void setChildrenAgeInMonths(String childrenAge) {
+        this.childrenAgeInMonths = childrenAge;
     }
 
-    public VacStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(VacStatus status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

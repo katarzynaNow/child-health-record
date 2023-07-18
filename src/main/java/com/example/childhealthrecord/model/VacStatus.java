@@ -1,8 +1,8 @@
 package com.example.childhealthrecord.model;
 
 public enum VacStatus {
-
     DONE,
     ARRANGED,
-    TO_ARRANGE
+    TO_ARRANGE,
+    NOT_APPLICABLE
 }
