@@ -24,7 +24,7 @@
                             <th>Name</th>
                             <th>Status</th>
                             <th>Notes</th>
-                            <th>Actions</th>
+                            <th>Change status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,7 +35,18 @@
                             <td th:text="${vacc.getStatus()}"></td>
                             <td th:text="${vacc.getNotes()}"></td>
                             <td>
-
+                                <a th:unless="${vacc.getStatus().name().equals('DONE')}" class="btn btn-success btn-sm"
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, status='DONE')}"
+                                   th:text="DONE"></a>
+                                <a th:unless="${vacc.getStatus().name().equals('ARRANGED')}" class="btn btn-info btn-sm"
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, status='ARRANGED')}"
+                                   th:text="ARRANGED"></a>
+                                <a th:unless="${vacc.getStatus().name().equals('TO_ARRANGE')}" class="btn btn-secondary btn-sm"
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, status='TO_ARRANGE')}"
+                                   th:text="TO_ARRANGE"></a>
+                                <a th:unless="${vacc.getStatus().name().equals('NOT_APPLICABLE')}" class="btn btn-dark btn-sm"
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, status='not applic')}"
+                                   th:text="NOT_APPLICABLE"></a>
                             </td>
                         </tr>
                         </tbody>

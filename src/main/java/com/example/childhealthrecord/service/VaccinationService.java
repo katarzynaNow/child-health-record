@@ -20,4 +20,12 @@ public class VaccinationService {
 
         return vaccinationRepository.findAll();
     }
+
+    public Vaccination findById(Integer id){
+        return vaccinationRepository.findById(id).get();
+    }
+
+    public void save(Vaccination vaccination){
+        vaccinationRepository.save(vaccination);
+    }
 }
