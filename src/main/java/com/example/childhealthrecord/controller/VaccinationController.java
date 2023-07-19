@@ -1,14 +1,13 @@
 package com.example.childhealthrecord.controller;
 
+import com.example.childhealthrecord.model.Disease;
 import com.example.childhealthrecord.model.VacStatus;
 import com.example.childhealthrecord.model.Vaccination;
 import com.example.childhealthrecord.service.VaccinationService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,11 +24,17 @@ public class VaccinationController {
     }
 
     @GetMapping
-    public String vaccinationSchedulePage(Model model){
+    public String vaccinationSchedulePage(Model model, @RequestParam(required = false) Integer editedId){
         List<Vaccination> vaccinations = vaccinationService.findAll();
 
         model.addAttribute("vaccinations", vaccinations);
         model.addAttribute("title", title);
+        model.addAttribute("editedId", editedId);
+
+        if(editedId != null) {
+            model.addAttribute("editVaccination", vaccinationService.findById(editedId));
+        }
+
         return "vaccination";
     }
 
@@ -37,6 +42,15 @@ public class VaccinationController {
     public String updateStatus(@RequestParam Integer id, @RequestParam VacStatus vacStatus){
         Vaccination existing = vaccinationService.findById(id);
         existing.setStatus(vacStatus);
+        vaccinationService.save(existing);
+        return "redirect:/vaccination";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editNotes(String notes, @PathVariable Integer id) {
+        Vaccination existing = vaccinationService.findById(id);
+        existing.setNotes(notes);
+
         vaccinationService.save(existing);
         return "redirect:/vaccination";
     }
