@@ -34,24 +34,20 @@
                             <td th:text="${vacc.getScope()}"></td>
                             <td th:text="${vacc.getChildrenAgeInMonths()}"></td>
                             <td th:text="${vacc.getName()}"></td>
-                            <td th:text="${vacc.getStatus()}"></td>
+                            <td th:text="${#strings.toLowerCase(vacc.getStatus())}"></td>
                             <td th:text="${vacc.getNotes()}"></td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm" th:href="@{/vaccination(editedId=${vacc.getId()})}">Edit notes</a>
+                                    <a class="btn btn-outline-primary btn-sm" th:href="@{/vaccination(editedId=${vacc.getId()})}">edit notes</a>
                             </td>
                             <td>
                                 <a th:if="${vacc.getStatus().name().equals('TO_ARRANGE')}" class="btn btn-success btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='DONE')}"
-                                   th:text="DONE"></a>
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='DONE')}">done</a>
                                 <a th:if="${vacc.getStatus().name().equals('ARRANGED')}" class="btn btn-success btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='DONE')}"
-                                   th:text="DONE"></a>
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='DONE')}">done</a>
                                 <a th:if="${vacc.getStatus().name().equals('TO_ARRANGE')}" class="btn btn-primary btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='ARRANGED')}"
-                                   th:text="ARRANGED"></a>
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='ARRANGED')}">arranged</a>
                                 <a th:if="${vacc.getStatus().name().equals('TO_ARRANGE')}" class="btn btn-secondary btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='N_A')}"
-                                   th:text="N_A"></a>
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='NOT_APPLICABLE')}">n/a</a>
                             </td>
                             </div>
                             <div th:unless="${vacc.getId() != editedId}">
