@@ -48,8 +48,8 @@
                                    th:href="@{/vaccination/update(id=${vacc.getId()}, status='TO_ARRANGE')}"
                                    th:text="TO_ARRANGE"></a>-->
                                 <a th:if="${vacc.getStatus().name().equals('TO_ARRANGE')}" class="btn btn-dark btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='NOT_APPLICABLE')}"
-                                   th:text="NOT_APPLICABLE"></a>
+                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='N_A')}"
+                                   th:text="N_A"></a>
                             </td>
                         </tr>
                         </tbody>

@@ -4,5 +4,5 @@ public enum VacStatus {
     DONE,
     ARRANGED,
     TO_ARRANGE,
-    NOT_APPLICABLE
+    N_A
 }
