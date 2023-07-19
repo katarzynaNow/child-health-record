@@ -34,9 +34,9 @@ public class VaccinationController {
     }
 
     @GetMapping("/update")
-    public String updateStatus(@RequestParam Integer id, @RequestParam VacStatus status){
+    public String updateStatus(@RequestParam Integer id, @RequestParam VacStatus vacStatus){
         Vaccination existing = vaccinationService.findById(id);
-        existing.setStatus(status);
+        existing.setStatus(vacStatus);
         vaccinationService.save(existing);
         return "redirect:/vaccination";
     }
