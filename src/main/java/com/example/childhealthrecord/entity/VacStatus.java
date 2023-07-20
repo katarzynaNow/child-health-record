@@ -1,4 +1,4 @@
-package com.example.childhealthrecord.model;
+package com.example.childhealthrecord.entity;
 
 public enum VacStatus {
     DONE,

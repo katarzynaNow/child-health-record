@@ -1,6 +1,8 @@
 package com.example.childhealthrecord.service;
 
-import com.example.childhealthrecord.model.Disease;
+import com.example.childhealthrecord.entity.DiseaseEntity;
+import com.example.childhealthrecord.mapper.DiseaseMapper;
+import com.example.childhealthrecord.model.DiseaseModel;
 import com.example.childhealthrecord.repository.DiseaseRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +17,17 @@ public class DiseaseService {
         this.diseaseRepository = diseaseRepository;
     }
 
-    public List<Disease> findAll() {
+    public List<DiseaseEntity> findAll() {
         return diseaseRepository.findAll();
     }
 
-    public void save (Disease disease){
+    public void saveDisease (DiseaseModel diseaseModel){
+        DiseaseEntity diseaseEntity = DiseaseMapper.toEntity(diseaseModel);
+
+        diseaseRepository.save(diseaseEntity);
+    }
+
+    public void save (DiseaseEntity disease){
         diseaseRepository.save(disease);
     }
 
@@ -27,7 +35,7 @@ public class DiseaseService {
         diseaseRepository.deleteById(id);
     }
 
-    public Disease findById(Integer id){
+    public DiseaseEntity findById(Integer id){
         return diseaseRepository.findById(id).get();
     }
 

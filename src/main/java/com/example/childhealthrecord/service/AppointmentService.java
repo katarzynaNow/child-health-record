@@ -1,7 +1,6 @@
 package com.example.childhealthrecord.service;
 
-import com.example.childhealthrecord.model.Appointment;
-import com.example.childhealthrecord.model.Disease;
+import com.example.childhealthrecord.entity.Appointment;
 import com.example.childhealthrecord.repository.AppointmentRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.example.childhealthrecord.controller;
 
-import com.example.childhealthrecord.model.Antibiotic;
-import com.example.childhealthrecord.model.Appointment;
+import com.example.childhealthrecord.entity.Antibiotic;
+import com.example.childhealthrecord.entity.Appointment;
 import com.example.childhealthrecord.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

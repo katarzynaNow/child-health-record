@@ -1,8 +1,7 @@
 package com.example.childhealthrecord.controller;
 
-import com.example.childhealthrecord.model.Disease;
-import com.example.childhealthrecord.model.VacStatus;
-import com.example.childhealthrecord.model.Vaccination;
+import com.example.childhealthrecord.entity.VacStatus;
+import com.example.childhealthrecord.entity.Vaccination;
 import com.example.childhealthrecord.service.VaccinationService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

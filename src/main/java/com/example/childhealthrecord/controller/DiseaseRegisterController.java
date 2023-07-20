@@ -1,7 +1,8 @@
 package com.example.childhealthrecord.controller;
 
-import com.example.childhealthrecord.model.Disease;
-import com.example.childhealthrecord.model.Symptom;
+import com.example.childhealthrecord.entity.DiseaseEntity;
+import com.example.childhealthrecord.entity.Symptom;
+import com.example.childhealthrecord.model.DiseaseModel;
 import com.example.childhealthrecord.service.DiseaseService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class DiseaseRegisterController {
 
     @GetMapping
     public String diseaseRegisterPage(Model model, @RequestParam(required = false) Integer editedId){
-        List<Disease> diseases = diseaseService.findAll();
+        List<DiseaseEntity> diseases = diseaseService.findAll();
         Symptom[] symptoms = Symptom.values();
 
         model.addAttribute("diseases", diseases);
@@ -43,7 +44,7 @@ public class DiseaseRegisterController {
 
     @GetMapping("/create")
     public String create (Model model){
-        Disease newDisease = new Disease();
+        DiseaseEntity newDisease = new DiseaseEntity();
         Symptom[] symptoms = Symptom.values();
 
         model.addAttribute("newDisease", newDisease);
@@ -52,9 +53,13 @@ public class DiseaseRegisterController {
     }
 
     @PostMapping("/create")
-    public String createAction(Disease newDisease, BindingResult result){
-        newDisease.setId(null);
-        diseaseService.save(newDisease);
+    public String createAction(DiseaseModel diseaseModel, BindingResult result){
+
+        if(result.hasErrors()){
+            return "createDisease";
+        }
+
+        diseaseService.saveDisease(diseaseModel);
         return "redirect:/diseaseRegister";
     }
 
@@ -65,8 +70,8 @@ public class DiseaseRegisterController {
     }
 
     @PostMapping("/edit/{id}")
-    public String edit(Disease disease, @PathVariable Integer id) {
-    Disease existing = diseaseService.findById(id);
+    public String edit(DiseaseEntity disease, @PathVariable Integer id) {
+    DiseaseEntity existing = diseaseService.findById(id);
 
     existing.setName(disease.getName());
     existing.setStartingDate(disease.getStartingDate());

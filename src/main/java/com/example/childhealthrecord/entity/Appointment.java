@@ -1,4 +1,4 @@
-package com.example.childhealthrecord.model;
+package com.example.childhealthrecord.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.Instant;
 
 @Entity
+@Table(name="appointments")
 public class Appointment {
 
     @Id
@@ -31,14 +32,14 @@ public class Appointment {
 
    @ManyToOne
    @JoinColumn
-   private Disease disease;
+   private DiseaseEntity disease;
 
 
     public Appointment() {
     }
 
     public Appointment(Instant date, String diagnosis, String medicines, Antibiotic antibiotic, String notes,
-                       Disease disease) {
+                       DiseaseEntity disease) {
         this.date = date;
         this.diagnosis = diagnosis;
         this.medicines = medicines;
@@ -111,11 +112,11 @@ public class Appointment {
         this.updatedAt = updatedAt;
     }
 
-    public Disease getDisease() {
+    public DiseaseEntity getDisease() {
         return disease;
     }
 
-    public void setDisease(Disease disease) {
+    public void setDisease(DiseaseEntity disease) {
         this.disease = disease;
     }
 }

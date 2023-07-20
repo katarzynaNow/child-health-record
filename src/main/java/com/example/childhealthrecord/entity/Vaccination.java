@@ -1,4 +1,4 @@
-package com.example.childhealthrecord.model;
+package com.example.childhealthrecord.entity;
 
 import jakarta.persistence.*;
 
@@ -8,23 +8,17 @@ public class Vaccination {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "scope")
     private String scope;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "childrenAgeInMonths")
     private String childrenAgeInMonths;
 
-    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private VacStatus status;
 
-    @Column(name = "notes")
     private String notes;
 
     public Integer getId() {
