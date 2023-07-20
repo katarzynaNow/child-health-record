@@ -20,7 +20,7 @@
               <label>Name: </label>
               <input class="form-control" type="text" th:field="*{name}" >
               <span class="error-msg" th:if="${#fields.hasErrors('name')}">
-                The name should be between 2 and 30 characters long.
+                Name should be between 2 and 30 characters long.
               </span>
             </div>
             <div class="form-group">

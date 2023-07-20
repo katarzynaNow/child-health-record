@@ -47,7 +47,7 @@ public class DiseaseEntity {
 
     @OneToMany(mappedBy = "disease")
     @Column(name="appointments")
-    private List<Appointment> appointments;
+    private List<AppointmentEntity> appointments;
 
     public DiseaseEntity() {
     }
@@ -134,24 +134,16 @@ public class DiseaseEntity {
         this.updatedAt = updatedAt;
     }
 
-    public List<Appointment> getAppointments() {
+    public List<AppointmentEntity> getAppointments() {
         return appointments;
     }
 
-    public void setAppointments(List<Appointment> appointments) {
+    public void setAppointments(List<AppointmentEntity> appointments) {
         this.appointments = appointments;
     }
 
     @Override
     public String toString() {
-        return "Disease{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", startingDate=" + startingDate +
-                ", endingDate=" + endingDate +
-                ", symptom1=" + symptom1 +
-                ", symptom2=" + symptom2 +
-                ", symptom3=" + symptom3 +
-                '}';
+        return "id: " + id;
     }
 }

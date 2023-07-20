@@ -1,6 +1,11 @@
 package com.example.childhealthrecord.service;
 
-import com.example.childhealthrecord.entity.Appointment;
+import com.example.childhealthrecord.entity.AppointmentEntity;
+import com.example.childhealthrecord.entity.DiseaseEntity;
+import com.example.childhealthrecord.mapper.AppointmentMapper;
+import com.example.childhealthrecord.mapper.DiseaseMapper;
+import com.example.childhealthrecord.model.AppointmentModel;
+import com.example.childhealthrecord.model.DiseaseModel;
 import com.example.childhealthrecord.repository.AppointmentRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +20,17 @@ public class AppointmentService {
         this.appointmentRepository = appointmentRepository;
     }
 
-    public List<Appointment> findAll(){
+    public List<AppointmentEntity> findAll(){
         return appointmentRepository.findAll();
     }
 
-    public void save(Appointment appointment){
+    public void saveAppointmentModelToEntity(AppointmentModel appointmentModel){
+        AppointmentEntity appointmentEntity = AppointmentMapper.toEntity(appointmentModel);
+
+        appointmentRepository.save(appointmentEntity);
+    }
+
+    public void save (AppointmentEntity appointment){
         appointmentRepository.save(appointment);
     }
 
@@ -27,7 +38,7 @@ public class AppointmentService {
         appointmentRepository.deleteById(id);
     }
 
-    public Appointment findById(Integer id){
+    public AppointmentEntity findById(Integer id){
         return appointmentRepository.findById(id).get();
     }
 

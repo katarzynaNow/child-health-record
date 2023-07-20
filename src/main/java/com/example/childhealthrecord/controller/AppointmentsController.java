@@ -1,7 +1,8 @@
 package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.entity.Antibiotic;
-import com.example.childhealthrecord.entity.Appointment;
+import com.example.childhealthrecord.entity.AppointmentEntity;
+import com.example.childhealthrecord.model.AppointmentModel;
 import com.example.childhealthrecord.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class AppointmentsController {
 
     @GetMapping
     public String appointmentsPage(Model model, @RequestParam(required = false) Integer editedId){
-        List<Appointment> appointments = appointmentService.findAll();
+        List<AppointmentEntity> appointments = appointmentService.findAll();
         Antibiotic[] antibiotics = Antibiotic.values();
 
         model.addAttribute("title", title);
@@ -41,7 +42,7 @@ public class AppointmentsController {
 
     @GetMapping("/create")
     public String create (Model model){
-        Appointment newAppointment = new Appointment();
+        AppointmentEntity newAppointment = new AppointmentEntity();
         Antibiotic[] antibiotics = Antibiotic.values();
 
         model.addAttribute("newAppointment", newAppointment);
@@ -51,9 +52,8 @@ public class AppointmentsController {
      }
 
      @PostMapping("/create")
-    public String createAction(Appointment newAppointment){
-        newAppointment.setId(null);
-        appointmentService.save(newAppointment);
+    public String createAction(AppointmentModel newAppointment){
+        appointmentService.saveAppointmentModelToEntity(newAppointment);
 
         return "redirect:/appointments";
      }
@@ -66,8 +66,8 @@ public class AppointmentsController {
      }
 
      @PostMapping("/edit/{id}")
-     public String edit( Appointment appointment, @PathVariable Integer id){
-        Appointment existing = appointmentService.findById(id);
+     public String edit(AppointmentEntity appointment, @PathVariable Integer id){
+        AppointmentEntity existing = appointmentService.findById(id);
 
         existing.setDate(appointment.getDate());
         existing.setDiagnosis(appointment.getDiagnosis());

@@ -1,18 +1,14 @@
-package com.example.childhealthrecord.entity;
+package com.example.childhealthrecord.model;
 
+import com.example.childhealthrecord.entity.Antibiotic;
+import com.example.childhealthrecord.entity.DiseaseEntity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
-@Entity
-@Table(name="appointments")
-public class Appointment {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class AppointmentModel {
 
     private Instant date;
 
@@ -24,37 +20,9 @@ public class Appointment {
 
     private String notes;
 
-    @CreationTimestamp
-    private Instant createdAt;
-
-    @UpdateTimestamp
-    private Instant updatedAt;
-
-   @ManyToOne
-   @JoinColumn
-   private DiseaseEntity disease;
-
-
-    public Appointment() {
-    }
-
-    public Appointment(Instant date, String diagnosis, String medicines, Antibiotic antibiotic, String notes,
-                       DiseaseEntity disease) {
-        this.date = date;
-        this.diagnosis = diagnosis;
-        this.medicines = medicines;
-        this.antibiotic = antibiotic;
-        this.notes = notes;
-        this.disease = disease;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @ManyToOne
+    @JoinColumn
+    private DiseaseEntity disease;
 
     public Instant getDate() {
         return date;
@@ -94,22 +62,6 @@ public class Appointment {
 
     public void setNotes(String notes) {
         this.notes = notes;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public DiseaseEntity getDisease() {
