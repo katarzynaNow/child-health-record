@@ -21,7 +21,7 @@ public class DiseaseService {
         return diseaseRepository.findAll();
     }
 
-    public void saveDisease (DiseaseModel diseaseModel){
+    public void saveDiseaseModelToEntity(DiseaseModel diseaseModel){
         DiseaseEntity diseaseEntity = DiseaseMapper.toEntity(diseaseModel);
 
         diseaseRepository.save(diseaseEntity);

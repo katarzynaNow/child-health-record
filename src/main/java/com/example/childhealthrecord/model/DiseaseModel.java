@@ -3,6 +3,8 @@ package com.example.childhealthrecord.model;
 import com.example.childhealthrecord.entity.Appointment;
 import com.example.childhealthrecord.entity.Symptom;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,6 +13,7 @@ import java.util.List;
 
 public class DiseaseModel {
 
+    @Size(min=2, max=30)
     private String name;
 
     private Instant startingDate;

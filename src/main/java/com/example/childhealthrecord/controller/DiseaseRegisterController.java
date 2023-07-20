@@ -4,6 +4,7 @@ import com.example.childhealthrecord.entity.DiseaseEntity;
 import com.example.childhealthrecord.entity.Symptom;
 import com.example.childhealthrecord.model.DiseaseModel;
 import com.example.childhealthrecord.service.DiseaseService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,13 +54,15 @@ public class DiseaseRegisterController {
     }
 
     @PostMapping("/create")
-    public String createAction(DiseaseModel diseaseModel, BindingResult result){
+    public String createAction(@Valid DiseaseModel newDisease, BindingResult result, Model model){
 
         if(result.hasErrors()){
+            model.addAttribute(newDisease);
+            model.addAttribute("org.springframework.validation.BindingResult.newDisease", result);
             return "createDisease";
         }
 
-        diseaseService.saveDisease(diseaseModel);
+        diseaseService.saveDiseaseModelToEntity(newDisease);
         return "redirect:/diseaseRegister";
     }
 
