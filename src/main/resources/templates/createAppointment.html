@@ -23,10 +23,16 @@
             <div class="form-group">
               <label>Diagnosis: </label>
               <input class="form-control" type="text" th:field="*{diagnosis}" >
+              <span class="error-msg" th:if="${#fields.hasErrors('diagnosis')}">
+                Diagnosis name should be between 2 and 30 characters long.
+              </span>
             </div>
             <div class="form-group">
               <label>Medicines: </label>
               <input class="form-control" type="text" th:field="*{medicines}" >
+              <span class="error-msg" th:if="${#fields.hasErrors('medicines')}">
+                Medicines description should be between 2 and 30 characters long.
+              </span>
             </div>
             <div class="form-group">
               <label>Antibiotic (select form the list): </label>
@@ -37,6 +43,9 @@
             <div class="form-group">
               <label>Notes: </label>
               <input class="form-control" type="text" th:field="*{notes}" >
+              <span class="error-msg" th:if="${#fields.hasErrors('notes')}">
+                Notes should be no more than 200 characters long.
+              </span>
             </div>
             <div class="form-group">
               <label>What disease does the visit concern? (enter id): </label>

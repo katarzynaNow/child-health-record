@@ -2,11 +2,16 @@ package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.AppointmentEntity;
+import com.example.childhealthrecord.entity.DiseaseEntity;
+import com.example.childhealthrecord.entity.Symptom;
 import com.example.childhealthrecord.model.AppointmentModel;
+import com.example.childhealthrecord.model.DiseaseModel;
 import com.example.childhealthrecord.service.AppointmentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,7 +57,14 @@ public class AppointmentsController {
      }
 
      @PostMapping("/create")
-    public String createAction(AppointmentModel newAppointment){
+    public String createAction(@Valid AppointmentModel newAppointment, BindingResult result, Model model){
+
+         if(result.hasErrors()){
+             model.addAttribute(newAppointment);
+             model.addAttribute("org.springframework.validation.BindingResult.newAppointment", result);
+             return "createAppointment";
+         }
+
         appointmentService.saveAppointmentModelToEntity(newAppointment);
 
         return "redirect:/appointments";
