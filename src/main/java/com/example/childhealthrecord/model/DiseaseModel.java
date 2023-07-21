@@ -4,16 +4,14 @@ import com.example.childhealthrecord.entity.Symptom;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
-import java.time.Instant;
-
 public class DiseaseModel {
 
     @Size(min=2, max=30)
     private String name;
 
-    private Instant startingDate;
+    private String startingDate;
 
-    private Instant endingDate;
+    private String endingDate;
 
     @Enumerated(EnumType.STRING)
     private Symptom symptom1;
@@ -32,19 +30,19 @@ public class DiseaseModel {
         this.name = name;
     }
 
-    public Instant getStartingDate() {
+    public String getStartingDate() {
         return startingDate;
     }
 
-    public void setStartingDate(Instant startingDate) {
+    public void setStartingDate(String startingDate) {
         this.startingDate = startingDate;
     }
 
-    public Instant getEndingDate() {
+    public String getEndingDate() {
         return endingDate;
     }
 
-    public void setEndingDate(Instant endingDate) {
+    public void setEndingDate(String endingDate) {
         this.endingDate = endingDate;
     }
 

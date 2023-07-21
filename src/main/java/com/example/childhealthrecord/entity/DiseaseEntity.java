@@ -20,10 +20,10 @@ public class DiseaseEntity {
     private String name;
 
     @Column(name="starting_date")
-    private Instant startingDate;
+    private String startingDate;
 
     @Column(name="ending_date")
-    private Instant endingDate;
+    private String endingDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name="symptom_1")
@@ -52,7 +52,7 @@ public class DiseaseEntity {
     public DiseaseEntity() {
     }
 
-    public DiseaseEntity(String name, Instant startingDate, Instant endingDate, Symptom symptom1,
+    public DiseaseEntity(String name, String startingDate, String endingDate, Symptom symptom1,
                          Symptom symptom2, Symptom symptom3) {
         this.name = name;
         this.startingDate = startingDate;
@@ -102,19 +102,19 @@ public class DiseaseEntity {
         this.symptom3 = symptom3;
     }
 
-    public Instant getStartingDate() {
+    public String getStartingDate() {
         return startingDate;
     }
 
-    public void setStartingDate(Instant startingDate) {
+    public void setStartingDate(String startingDate) {
         this.startingDate = startingDate;
     }
 
-    public Instant getEndingDate() {
+    public String getEndingDate() {
         return endingDate;
     }
 
-    public void setEndingDate(Instant endingDate) {
+    public void setEndingDate(String endingDate) {
         this.endingDate = endingDate;
     }
 

@@ -16,7 +16,7 @@ public class AppointmentEntity {
     private Integer id;
 
     @Column(name = "date")
-    private Instant date;
+    private String date;
 
     @Column(name = "diagnosis")
     private String diagnosis;
@@ -47,7 +47,7 @@ public class AppointmentEntity {
     public AppointmentEntity() {
     }
 
-    public AppointmentEntity(Instant date, String diagnosis, String medicines, Antibiotic antibiotic, String notes,
+    public AppointmentEntity(String date, String diagnosis, String medicines, Antibiotic antibiotic, String notes,
                              DiseaseEntity disease) {
         this.date = date;
         this.diagnosis = diagnosis;
@@ -65,11 +65,11 @@ public class AppointmentEntity {
         this.id = id;
     }
 
-    public Instant getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -2,10 +2,7 @@ package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.AppointmentEntity;
-import com.example.childhealthrecord.entity.DiseaseEntity;
-import com.example.childhealthrecord.entity.Symptom;
 import com.example.childhealthrecord.model.AppointmentModel;
-import com.example.childhealthrecord.model.DiseaseModel;
 import com.example.childhealthrecord.service.AppointmentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
@@ -62,6 +59,10 @@ public class AppointmentsController {
          if(result.hasErrors()){
              model.addAttribute(newAppointment);
              model.addAttribute("org.springframework.validation.BindingResult.newAppointment", result);
+
+             Antibiotic[] antibiotics = Antibiotic.values();
+             model.addAttribute("antibiotics", antibiotics);
+
              return "createAppointment";
          }
 

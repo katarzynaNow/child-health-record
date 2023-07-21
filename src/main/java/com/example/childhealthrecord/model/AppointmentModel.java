@@ -4,14 +4,10 @@ import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.DiseaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.Instant;
 
 public class AppointmentModel {
 
-    private Instant date;
+    private String date;
 
     @Size(min=2, max=30)
     private String diagnosis;
@@ -28,11 +24,11 @@ public class AppointmentModel {
     @JoinColumn
     private DiseaseEntity disease;
 
-    public Instant getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -59,6 +59,10 @@ public class DiseaseRegisterController {
         if(result.hasErrors()){
             model.addAttribute(newDisease);
             model.addAttribute("org.springframework.validation.BindingResult.newDisease", result);
+
+            Symptom[] symptoms = Symptom.values();
+            model.addAttribute("symptoms", symptoms);
+
             return "createDisease";
         }
 

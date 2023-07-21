@@ -33,7 +33,7 @@
             <tr th:each="a: ${appointments}" class="text-center">
               <div th:if="${a.getId() != editedId}">
                 <td th:text="${a.getId()}"></td>
-                <td th:text="${#temporals.format(a.getDate(), 'dd-MM-yyyy')}"></td>
+                <td th:text="${a.getDate()}"></td>
                 <td th:text="${a.getDiagnosis()}"></td>
                 <td th:text="${a.getMedicines()}"></td>
                 <td th:text="${#strings.toLowerCase(a.getAntibiotic())}"></td>
