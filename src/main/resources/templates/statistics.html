@@ -16,7 +16,10 @@
           <h1 th:text="${title}"></h1>
           <br><br>
           <div>
-            <h4 th:text=" 'Antibiotics were prescribed ' + ${antibiotics} + ' times in 2023.'"></h4>
+            <ul>
+            <li><h4 th:if="${antibiotics} == 1" th:text=" 'Antibiotic was prescribed ' + ${antibiotics} + ' time in 2023.'"></h4>
+             <h4 th:unless="${antibiotics} == 1" th:text=" 'Antibiotics were prescribed ' + ${antibiotics} + ' times in 2023.'"></h4></li>
+            </ul>
           </div>
 
 
