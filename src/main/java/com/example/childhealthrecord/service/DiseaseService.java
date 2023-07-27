@@ -39,4 +39,26 @@ public class DiseaseService {
         return diseaseRepository.findById(id).get();
     }
 
+    public int howManyDaysSick(){
+        List<DiseaseEntity> diseases = diseaseRepository.findAll();
+        int sickDays = 0;
+        int diseaseDuration = 0;
+
+        for (DiseaseEntity d : diseases){
+            String startString = d.getStartingDate().substring(8,10);
+            int startInt = Integer.parseInt(startString);
+
+            String endString = d.getEndingDate().substring(8,10);
+            int endInt = Integer.parseInt(endString);
+
+            if(startInt < endInt) {
+                diseaseDuration = endInt - startInt;
+            } else {
+                diseaseDuration = (30 - startInt) + endInt;
+            }
+            sickDays += diseaseDuration;
+        }
+        return sickDays;
+    }
+
 }

@@ -17,8 +17,13 @@
           <br><br>
           <div>
             <ul>
-            <li><h4 th:if="${antibiotics} == 1" th:text=" 'Antibiotic was prescribed ' + ${antibiotics} + ' time in 2023.'"></h4>
-             <h4 th:unless="${antibiotics} == 1" th:text=" 'Antibiotics were prescribed ' + ${antibiotics} + ' times in 2023.'"></h4></li>
+            <li>
+              <h4 th:if="${antibiotics} == 1" th:text=" 'Antibiotic was prescribed ' + ${antibiotics} + ' time in 2023.'"></h4>
+             <h4 th:unless="${antibiotics} == 1" th:text=" 'Antibiotics were prescribed ' + ${antibiotics} + ' times in 2023.'"></h4>
+            </li>
+              <li>
+                <h4 th:text="'Child was sick for ' + ${sickDaysInYear} + ' days in 2023.'"></h4>
+              </li>
             </ul>
           </div>
 
