@@ -42,4 +42,16 @@ public class AppointmentService {
         return appointmentRepository.findById(id).get();
     }
 
+    public int howManyAntibiotics(){
+        List<AppointmentEntity> appointments = appointmentRepository.findAll();
+        int counter = 0;
+        for ( AppointmentEntity a: appointments) {
+            if (a.getAntibiotic().name() == "YES"){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+
 }
