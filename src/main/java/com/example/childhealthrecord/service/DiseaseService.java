@@ -6,6 +6,9 @@ import com.example.childhealthrecord.model.DiseaseModel;
 import com.example.childhealthrecord.repository.DiseaseRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 @Service
@@ -39,7 +42,7 @@ public class DiseaseService {
         return diseaseRepository.findById(id).get();
     }
 
-    public int howManyDaysSick(){
+    public int howManyDaysSickInYear(){
         List<DiseaseEntity> diseases = diseaseRepository.findAll();
         int sickDays = 0;
         int diseaseDuration = 0;
@@ -59,6 +62,12 @@ public class DiseaseService {
             sickDays += diseaseDuration;
         }
         return sickDays;
+    }
+
+    public int sickDaysPercentage(int sickDaysInYear){
+        int dayOfYear = LocalDate.now().getDayOfYear();
+        int sickDaysPercentage = (sickDaysInYear * 100)/dayOfYear;
+        return sickDaysPercentage;
     }
 
 }

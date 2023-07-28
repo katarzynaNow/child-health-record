@@ -23,7 +23,7 @@
             </li>
               <br>
               <li>
-                <h4 th:text="'Child was sick for ' + ${sickDaysInYear} + ' days in 2023, which is ' + ${sickPercentage} + '% of the year.'"></h4>
+                <h4 th:text="'From the beginning of the year to this day, child has been sick for ' + ${sickDaysInYear} + ' days, which is ' + ${sickPercentage} + '% of the time.'"></h4>
                 <br>
                 <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>

@@ -23,12 +23,12 @@ public class StatisticsController {
 
     @GetMapping("/statistics")
     public String statisticsPage(Model model){
-        int sickDaysInYear = diseaseService.howManyDaysSick();
-        int sickPercentage = Math.round((sickDaysInYear * 100)/360f);
+        int sickDaysInYear = diseaseService.howManyDaysSickInYear();
+        int sickPercentage = diseaseService.sickDaysPercentage(sickDaysInYear) ;
         int[] data = {100-sickPercentage, sickPercentage};
 
         model.addAttribute("sickDaysInYear", sickDaysInYear );
-        model.addAttribute("sickPercentage",Math.round(sickPercentage));
+        model.addAttribute("sickPercentage",sickPercentage);
         model.addAttribute("data", data);
         model.addAttribute("antibiotics", appointmentService.howManyAntibiotics());
         model.addAttribute("title", title);
