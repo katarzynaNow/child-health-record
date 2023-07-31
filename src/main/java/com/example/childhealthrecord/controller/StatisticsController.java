@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalDate;
+
 @Controller
 public class StatisticsController {
     @Value("${app.title.statistics}")
@@ -23,15 +25,23 @@ public class StatisticsController {
 
     @GetMapping("/statistics")
     public String statisticsPage(Model model){
+        LocalDate currentDate = LocalDate.now();
+
         int sickDaysInYear = diseaseService.howManyDaysSickInYear();
         int sickPercentage = diseaseService.sickDaysPercentage(sickDaysInYear) ;
         int[] data = {100-sickPercentage, sickPercentage};
 
+        model.addAttribute("title", title);
+        model.addAttribute("currentDate", currentDate);
+
         model.addAttribute("sickDaysInYear", sickDaysInYear );
         model.addAttribute("sickPercentage",sickPercentage);
         model.addAttribute("data", data);
+
         model.addAttribute("antibiotics", appointmentService.howManyAntibiotics());
-        model.addAttribute("title", title);
+
+        model.addAttribute("sickDaysInJanuary", diseaseService.howManyDaysInMonthSick());
+
         return "statistics";
     }
 }

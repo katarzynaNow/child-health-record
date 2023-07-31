@@ -14,6 +14,7 @@
         <div class="col-md-12">
 
           <h1 th:text="${title}"></h1>
+          <h5 th:text="${currentDate}"></h5>
           <br><br>
           <div>
             <ul>
@@ -25,7 +26,9 @@
               <li>
                 <h4 th:text="'From the beginning of the year to this day, child has been sick for ' + ${sickDaysInYear} + ' days, which is ' + ${sickPercentage} + '% of the time.'"></h4>
                 <br>
+
                 <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
+
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
 
                 <script th:inline="javascript">
@@ -48,6 +51,10 @@
                   });
                 </script>
 
+              </li>
+
+              <li>
+                <h4 th:text=" 'Child was sick for ' + ${sickDaysInJanuary} + ' days in January.'"></h4>
               </li>
             </ul>
           </div>

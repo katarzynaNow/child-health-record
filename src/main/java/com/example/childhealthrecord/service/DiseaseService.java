@@ -48,16 +48,16 @@ public class DiseaseService {
         int diseaseDuration = 0;
 
         for (DiseaseEntity d : diseases){
-            String startString = d.getStartingDate().substring(8,10);
-            int startInt = Integer.parseInt(startString);
+            String startDayString = d.getStartingDate().substring(8,10);
+            int startDayInt = Integer.parseInt(startDayString);
 
-            String endString = d.getEndingDate().substring(8,10);
-            int endInt = Integer.parseInt(endString);
+            String endDayString = d.getEndingDate().substring(8,10);
+            int endDayInt = Integer.parseInt(endDayString);
 
-            if(startInt < endInt) {
-                diseaseDuration = endInt - startInt;
+            if(startDayInt < endDayInt) {
+                diseaseDuration = endDayInt - startDayInt;
             } else {
-                diseaseDuration = (30 - startInt) + endInt;
+                diseaseDuration = (30 - startDayInt) + endDayInt;
             }
             sickDays += diseaseDuration;
         }
@@ -66,8 +66,38 @@ public class DiseaseService {
 
     public int sickDaysPercentage(int sickDaysInYear){
         int dayOfYear = LocalDate.now().getDayOfYear();
-        int sickDaysPercentage = (sickDaysInYear * 100)/dayOfYear;
-        return sickDaysPercentage;
+        return (sickDaysInYear * 100)/dayOfYear;
+    }
+
+    public int howManyDaysInMonthSick(){
+        List<DiseaseEntity> diseases = diseaseRepository.findAll();
+        int sickDaysInMonth = 0;
+        int diseaseDuration = 0;
+
+        for (DiseaseEntity d: diseases){
+            String startDayString = d.getStartingDate().substring(8,10);
+            int startDayInt = Integer.parseInt(startDayString);
+
+            String endDayString = d.getEndingDate().substring(8,10);
+            int endDayInt = Integer.parseInt(endDayString);
+
+            String startMonthString = d.getStartingDate().substring(5,7);
+            int startMonthInt = Integer.parseInt(startMonthString);
+
+            String endMonthString = d.getEndingDate().substring(5,7);
+            int endMonthInt = Integer.parseInt(endMonthString);
+
+            if(startMonthInt == 1 && endMonthInt == 1) {
+                diseaseDuration = endDayInt - startDayInt;
+            } else if(startMonthInt == 1) {
+                diseaseDuration = 30 - startDayInt;
+            } else if (endMonthInt == 1){
+                diseaseDuration = endDayInt;
+            }
+            sickDaysInMonth += diseaseDuration;
+        }
+
+        return sickDaysInMonth;
     }
 
 }
