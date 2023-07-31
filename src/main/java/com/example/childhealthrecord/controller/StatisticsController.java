@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 @Controller
 public class StatisticsController {
@@ -31,6 +32,8 @@ public class StatisticsController {
         int sickPercentage = diseaseService.sickDaysPercentage(sickDaysInYear) ;
         int[] data = {100-sickPercentage, sickPercentage};
 
+        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
         model.addAttribute("title", title);
         model.addAttribute("currentDate", currentDate);
 
@@ -40,7 +43,8 @@ public class StatisticsController {
 
         model.addAttribute("antibiotics", appointmentService.howManyAntibiotics());
 
-        model.addAttribute("sickDaysInJanuary", diseaseService.howManyDaysInMonthSick());
+        model.addAttribute("monthsLabels", months);
+        model.addAttribute("sickDaysEveryMonthData", diseaseService.daysInMonthsSick());
 
         return "statistics";
     }

@@ -7,9 +7,9 @@ import com.example.childhealthrecord.repository.DiseaseRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DiseaseService {
@@ -69,35 +69,38 @@ public class DiseaseService {
         return (sickDaysInYear * 100)/dayOfYear;
     }
 
-    public int howManyDaysInMonthSick(){
+    public int[] daysInMonthsSick(){
         List<DiseaseEntity> diseases = diseaseRepository.findAll();
         int sickDaysInMonth = 0;
         int diseaseDuration = 0;
+        int[] sickDaysEveryMonth = new int[12];
 
-        for (DiseaseEntity d: diseases){
-            String startDayString = d.getStartingDate().substring(8,10);
-            int startDayInt = Integer.parseInt(startDayString);
+        for (int i = 1; i < 13; i++) {
+            for (DiseaseEntity d : diseases) {
+                String startDayString = d.getStartingDate().substring(8, 10);
+                int startDayInt = Integer.parseInt(startDayString);
 
-            String endDayString = d.getEndingDate().substring(8,10);
-            int endDayInt = Integer.parseInt(endDayString);
+                String endDayString = d.getEndingDate().substring(8, 10);
+                int endDayInt = Integer.parseInt(endDayString);
 
-            String startMonthString = d.getStartingDate().substring(5,7);
-            int startMonthInt = Integer.parseInt(startMonthString);
+                String startMonthString = d.getStartingDate().substring(5, 7);
+                int startMonthInt = Integer.parseInt(startMonthString);
 
-            String endMonthString = d.getEndingDate().substring(5,7);
-            int endMonthInt = Integer.parseInt(endMonthString);
+                String endMonthString = d.getEndingDate().substring(5, 7);
+                int endMonthInt = Integer.parseInt(endMonthString);
 
-            if(startMonthInt == 1 && endMonthInt == 1) {
-                diseaseDuration = endDayInt - startDayInt;
-            } else if(startMonthInt == 1) {
-                diseaseDuration = 30 - startDayInt;
-            } else if (endMonthInt == 1){
-                diseaseDuration = endDayInt;
+                if (startMonthInt == i && endMonthInt == i) {
+                    diseaseDuration = endDayInt - startDayInt;
+                } else if (startMonthInt == i) {
+                    diseaseDuration = 30 - startDayInt;
+                } else if (endMonthInt == i) {
+                    diseaseDuration = endDayInt;
+                }
+                sickDaysInMonth += diseaseDuration;
             }
-            sickDaysInMonth += diseaseDuration;
+            sickDaysEveryMonth[i-1] = sickDaysInMonth;
         }
 
-        return sickDaysInMonth;
+        return sickDaysEveryMonth;
     }
-
 }
