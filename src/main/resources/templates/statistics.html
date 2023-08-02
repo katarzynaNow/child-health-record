@@ -27,7 +27,9 @@
                 <h4 th:text="'From the beginning of the year to this day, child has been sick for ' + ${sickDaysInYear} + ' days, which is ' + ${sickPercentage} + '% of the time.'"></h4>
                 <br>
 
-                <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
+                <div>
+                <canvas id="chartId" aria-label="chart" height="350" width="580" style="margin:50px auto"></canvas>
+                </div>
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
 
@@ -55,6 +57,38 @@
               <br>
               <li>
                 <h4 th:text="'Sick days in every month'"></h4>
+
+                <div style="max-width: 800px; margin: 50px auto">
+                  <canvas id="myChart"></canvas>
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <script th:inline="javascript">
+                  const ctx = document.getElementById('myChart');
+
+                  new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                      labels: [[${monthsLabels}]],
+                      datasets: [{
+                        data: [[${sickDaysEveryMonthData}]],
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      plugins: {
+                        legend: {display: false}
+                      },
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                </script>
+
               </li>
             </ul>
           </div>

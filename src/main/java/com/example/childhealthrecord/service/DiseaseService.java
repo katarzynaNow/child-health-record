@@ -71,8 +71,6 @@ public class DiseaseService {
 
     public int[] daysInMonthsSick(){
         List<DiseaseEntity> diseases = diseaseRepository.findAll();
-        int sickDaysInMonth = 0;
-        int diseaseDuration = 0;
         int[] sickDaysEveryMonth = new int[12];
 
         for (int i = 1; i < 13; i++) {
@@ -89,22 +87,23 @@ public class DiseaseService {
                 String endMonthString = d.getEndingDate().substring(5, 7);
                 int endMonthInt = Integer.parseInt(endMonthString);
 
-                if (startMonthInt == i && endMonthInt == i) {
-                    diseaseDuration = endDayInt - startDayInt;
-                } else if (startMonthInt == i) {
-                    if ( i == 4 || i == 6 || i == 9 || i ==11) {
+                int diseaseDuration = 0;
+
+                if( d.getStartingDate().substring(2,4).equals("23") && d.getEndingDate().substring(2,4).equals("23")) {
+                    if (startMonthInt == i && endMonthInt == i) {
+                        diseaseDuration = endDayInt - startDayInt;
+                    } else if (startMonthInt == i && (i == 4 || i == 6 || i == 9 || i == 11)) {
                         diseaseDuration = 30 - startDayInt;
-                    } else if (i == 2){
+                    } else if (startMonthInt == i && i == 2) {
                         diseaseDuration = 28 - startDayInt;
-                    } else {
+                    } else if (startMonthInt == i) {
                         diseaseDuration = 31 - startDayInt;
+                    } else if (endMonthInt == i) {
+                        diseaseDuration = endDayInt;
                     }
-                } else if (endMonthInt == i) {
-                    diseaseDuration = endDayInt;
+                    sickDaysEveryMonth[i - 1] += diseaseDuration;
                 }
-                sickDaysInMonth += diseaseDuration;
             }
-            sickDaysEveryMonth[i-1] = sickDaysInMonth;
         }
         return sickDaysEveryMonth;
     }
