@@ -92,7 +92,13 @@ public class DiseaseService {
                 if (startMonthInt == i && endMonthInt == i) {
                     diseaseDuration = endDayInt - startDayInt;
                 } else if (startMonthInt == i) {
-                    diseaseDuration = 30 - startDayInt;
+                    if ( i == 4 || i == 6 || i == 9 || i ==11) {
+                        diseaseDuration = 30 - startDayInt;
+                    } else if (i == 2){
+                        diseaseDuration = 28 - startDayInt;
+                    } else {
+                        diseaseDuration = 31 - startDayInt;
+                    }
                 } else if (endMonthInt == i) {
                     diseaseDuration = endDayInt;
                 }
@@ -100,7 +106,6 @@ public class DiseaseService {
             }
             sickDaysEveryMonth[i-1] = sickDaysInMonth;
         }
-
         return sickDaysEveryMonth;
     }
 }
