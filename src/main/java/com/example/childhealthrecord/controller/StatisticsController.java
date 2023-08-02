@@ -28,7 +28,8 @@ public class StatisticsController {
     public String statisticsPage(Model model){
         LocalDate currentDate = LocalDate.now();
 
-        int sickDaysInYear = diseaseService.howManyDaysSickInYear();
+        int[] sickDaysEveryMonthData = diseaseService.daysInMonthsSick();
+        int sickDaysInYear = diseaseService.sickDaysInYear(sickDaysEveryMonthData);
         int sickPercentage = diseaseService.sickDaysPercentage(sickDaysInYear) ;
         int[] data = {100-sickPercentage, sickPercentage};
 
@@ -44,7 +45,7 @@ public class StatisticsController {
         model.addAttribute("antibiotics", appointmentService.howManyAntibiotics());
 
         model.addAttribute("monthsLabels", months);
-        model.addAttribute("sickDaysEveryMonthData", diseaseService.daysInMonthsSick());
+        model.addAttribute("sickDaysEveryMonthData", sickDaysEveryMonthData );
 
         return "statistics";
     }

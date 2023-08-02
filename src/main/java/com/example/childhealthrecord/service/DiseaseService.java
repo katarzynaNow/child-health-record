@@ -42,33 +42,6 @@ public class DiseaseService {
         return diseaseRepository.findById(id).get();
     }
 
-    public int howManyDaysSickInYear(){
-        List<DiseaseEntity> diseases = diseaseRepository.findAll();
-        int sickDays = 0;
-        int diseaseDuration = 0;
-
-        for (DiseaseEntity d : diseases){
-            String startDayString = d.getStartingDate().substring(8,10);
-            int startDayInt = Integer.parseInt(startDayString);
-
-            String endDayString = d.getEndingDate().substring(8,10);
-            int endDayInt = Integer.parseInt(endDayString);
-
-            if(startDayInt < endDayInt) {
-                diseaseDuration = endDayInt - startDayInt;
-            } else {
-                diseaseDuration = (30 - startDayInt) + endDayInt;
-            }
-            sickDays += diseaseDuration;
-        }
-        return sickDays;
-    }
-
-    public int sickDaysPercentage(int sickDaysInYear){
-        int dayOfYear = LocalDate.now().getDayOfYear();
-        return (sickDaysInYear * 100)/dayOfYear;
-    }
-
     public int[] daysInMonthsSick(){
         List<DiseaseEntity> diseases = diseaseRepository.findAll();
         int[] sickDaysEveryMonth = new int[12];
@@ -106,5 +79,19 @@ public class DiseaseService {
             }
         }
         return sickDaysEveryMonth;
+    }
+
+    public int sickDaysInYear(int[] daysInMonthsSick ){
+        int sickDaysInYear = 0;
+
+        for (int i = 0; i < daysInMonthsSick.length ; i++) {
+            sickDaysInYear += daysInMonthsSick[i];
+        }
+        return sickDaysInYear;
+    }
+
+    public int sickDaysPercentage(int sickDaysInYear){
+        int dayOfYear = LocalDate.now().getDayOfYear();
+        return (sickDaysInYear * 100)/dayOfYear;
     }
 }
