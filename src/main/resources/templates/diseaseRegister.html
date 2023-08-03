@@ -35,9 +35,9 @@
                 <td th:text="${d.getName()}"></td>
                 <td th:text="${d.getStartingDate()}"></td>
                 <td th:text="${d.getEndingDate()}"></td>
-                <td th:text="${#strings.toLowerCase(d.getSymptom1())}"></td>
-                <td th:text="${#strings.toLowerCase(d.getSymptom2())}"></td>
-                <td th:text="${#strings.toLowerCase(d.getSymptom3())}"></td>
+                <td th:text="${d.getSymptom1().getName()}"></td>
+                <td th:text="${d.getSymptom2().getName()}"></td>
+                <td th:text="${d.getSymptom3().getName()}"></td>
                 <td>
                   <span th:if="${d.getAppointments().isEmpty() == true}" th:text="no"></span>
                   <span th:unless="${d.getAppointments().isEmpty() == true}" th:text="yes"></span>
@@ -55,17 +55,17 @@
                   <td><input class="form-control" type="date" th:field="*{endingDate}"></td>
                   <td>
                     <select class="form-control" th:field="*{symptom1}">
-                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s.getName()}"></option>
                     </select>
                   </td>
                   <td>
                     <select class="form-control" th:field="*{symptom2}">
-                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s.getName()}"></option>
                     </select>
                   </td>
                   <td>
                     <select class="form-control" th:field="*{symptom3}">
-                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${#strings.toLowerCase(s)}"></option>
+                      <option th:each="s: ${symptoms}" th:value="${s}" th:text="${s.getName()}"></option>
                     </select>
                   </td>
                   <td><input class="form-control" type="text" th:field="*{appointments}" disabled> </td>

@@ -34,7 +34,7 @@
                             <td th:text="${vacc.getScope()}"></td>
                             <td th:text="${vacc.getChildrenAgeInMonths()}"></td>
                             <td th:text="${vacc.getName()}"></td>
-                            <td th:text="${#strings.toLowerCase(vacc.getStatus())}"></td>
+                            <td th:text="${vacc.getStatus().getName()}"></td>
                             <td th:text="${vacc.getNotes()}"></td>
                                 <td>
                                     <a class="btn btn-outline-primary btn-sm" th:href="@{/vaccination(editedId=${vacc.getId()})}">edit notes</a>
