@@ -2,13 +2,13 @@ package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.service.AppointmentService;
 import com.example.childhealthrecord.service.DiseaseService;
+import com.example.childhealthrecord.service.VaccinationService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDate;
-import java.util.Map;
 
 @Controller
 public class StatisticsController {
@@ -19,9 +19,12 @@ public class StatisticsController {
 
     private final DiseaseService diseaseService;
 
-    public StatisticsController(AppointmentService appointmentService, DiseaseService diseaseService) {
+    private final VaccinationService vaccinationService;
+
+    public StatisticsController(AppointmentService appointmentService, DiseaseService diseaseService, VaccinationService vaccinationService) {
         this.appointmentService = appointmentService;
         this.diseaseService = diseaseService;
+        this.vaccinationService = vaccinationService;
     }
 
     @GetMapping("/statistics")
@@ -46,6 +49,9 @@ public class StatisticsController {
 
         model.addAttribute("monthsLabels", months);
         model.addAttribute("sickDaysEveryMonthData", sickDaysEveryMonthData );
+
+        model.addAttribute("mandatoryVac", vaccinationService.howManyMandatoryVaccinations());
+        model.addAttribute("recommendedVac", vaccinationService.howManyRecommendedVaccinations());
 
         return "statistics";
     }

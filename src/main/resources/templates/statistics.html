@@ -54,9 +54,9 @@
                 </script>
 
               </li>
-              <br>
+
               <li>
-                <h4 th:text="'Sick days in every month'"></h4>
+                <h4 th:text="'Sick days in every month:'"></h4>
 
                 <div style="max-width: 800px; margin: 50px auto">
                   <canvas id="myChart"></canvas>
@@ -88,7 +88,9 @@
                     }
                   });
                 </script>
-
+              </li>
+              <li>
+                <h4 th:text="'Child has received '+ ${mandatoryVac} + ' out of 14 mandatory vaccinations, and '+ ${recommendedVac} + ' out of 9 recommended vaccinations so far.'"></h4>
               </li>
             </ul>
           </div>
