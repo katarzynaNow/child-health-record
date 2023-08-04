@@ -7,6 +7,7 @@ import com.example.childhealthrecord.repository.DiseaseRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,5 +94,16 @@ public class DiseaseService {
     public int sickDaysPercentage(int sickDaysInYear){
         int dayOfYear = LocalDate.now().getDayOfYear();
         return (sickDaysInYear * 100)/dayOfYear;
+    }
+
+    public List<Integer> diseasesIdList() {
+        List<DiseaseEntity> diseases = diseaseRepository.findAll();
+        List<Integer> diseasesId = new ArrayList<>();
+
+        for (DiseaseEntity d : diseases) {
+            diseasesId.add(d.getId());
+        }
+
+        return diseasesId;
     }
 }

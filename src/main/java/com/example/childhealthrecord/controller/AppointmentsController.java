@@ -4,6 +4,7 @@ import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.AppointmentEntity;
 import com.example.childhealthrecord.model.AppointmentModel;
 import com.example.childhealthrecord.service.AppointmentService;
+import com.example.childhealthrecord.service.DiseaseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,11 @@ public class AppointmentsController {
     private String title;
 
     private final AppointmentService appointmentService;
+    private final DiseaseService diseaseService;
 
-    public AppointmentsController(AppointmentService appointmentService) {
+    public AppointmentsController(AppointmentService appointmentService, DiseaseService diseaseService) {
         this.appointmentService = appointmentService;
+        this.diseaseService = diseaseService;
     }
 
     @GetMapping
@@ -49,6 +52,7 @@ public class AppointmentsController {
 
         model.addAttribute("newAppointment", newAppointment);
         model.addAttribute("antibiotics", antibiotics);
+        model.addAttribute("diseasesId", diseaseService.diseasesIdList());
 
         return "createAppointment";
      }
@@ -62,6 +66,7 @@ public class AppointmentsController {
 
              Antibiotic[] antibiotics = Antibiotic.values();
              model.addAttribute("antibiotics", antibiotics);
+             model.addAttribute("diseasesId", diseaseService.diseasesIdList());
 
              return "createAppointment";
          }
