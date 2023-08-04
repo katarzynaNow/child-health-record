@@ -3,10 +3,12 @@ package com.example.childhealthrecord.model;
 import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.DiseaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class AppointmentModel {
 
+    @Size(min = 10, max = 10)
     private String date;
 
     @Size(min=2, max=30)
@@ -15,11 +17,13 @@ public class AppointmentModel {
     @Size(min=2, max=30)
     private String medicines;
 
+    @Enumerated(EnumType.STRING)
     private Antibiotic antibiotic;
 
     @Size(max=200)
     private String notes;
 
+    @NotNull
     @ManyToOne
     @JoinColumn
     private DiseaseEntity disease;
