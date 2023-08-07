@@ -46,7 +46,7 @@ public class DiseaseEntity {
     @Column(name="updated_at")
     private Instant updatedAt;
 
-    @OneToMany(mappedBy = "disease")
+    @OneToMany(mappedBy = "disease", cascade = CascadeType.ALL)
     @Column(name="appointments")
     private List<AppointmentEntity> appointments;
 
