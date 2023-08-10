@@ -1,5 +1,5 @@
 Katarzyna Noworyta
-# rejestr-chorob-dziecka
+# child-health-record
 
 Aplikacja służy do prowadzenia rejestru związanego z rodzajem chorób występujących u dziecka, ich częstotliwością, sposobami leczenia oraz profilaktyką. Pozwala ona w uporządkowany sposób gromadzić informacje, a na ich podstawie wyciągać wnioski oraz dostrzegać prawidłowości, stanowiące ważne źródło wiedzy.<br /><br />
 Rejestr chorób dziecka składa się z następujących funkcjonalności:
