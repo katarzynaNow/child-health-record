@@ -18,13 +18,8 @@
           <br><br>
           <div>
             <ul>
-            <li>
-              <h4 th:if="${antibiotics} == 1" th:text=" 'Antibiotic was prescribed ' + ${antibiotics} + ' time in 2023.'"></h4>
-             <h4 th:unless="${antibiotics} == 1" th:text=" 'Antibiotics were prescribed ' + ${antibiotics} + ' times in 2023.'"></h4>
-            </li>
-              <br>
               <li>
-                <h4 th:text="'From the beginning of the year until this day, child has been sick for ' + ${sickDaysInYear} + ' days, which is ' + ${sickPercentage} + '% of the time.'"></h4>
+                <h4 th:text="'From the beginning of 2023 until this day, child has been sick for ' + ${sickDaysInYear} + ' days, which is ' + ${sickPercentage} + '% of the time.'"></h4>
                 <br>
 
                 <div>
@@ -54,9 +49,8 @@
                 </script>
 
               </li>
-
               <li>
-                <h4 th:text="'Sick days in every month:'"></h4>
+                <h4 th:text="'Sick days in every month of 2023:'"></h4>
 
                 <div style="max-width: 800px; margin: 50px auto">
                   <canvas id="myChart"></canvas>
@@ -89,6 +83,11 @@
                   });
                 </script>
               </li>
+              <li>
+                <h4 th:if="${antibiotics} == 1" th:text=" 'Antibiotic was prescribed ' + ${antibiotics} + ' time in 2023.'"></h4>
+                <h4 th:unless="${antibiotics} == 1" th:text=" 'Antibiotics were prescribed ' + ${antibiotics} + ' times in 2023.'"></h4>
+              </li>
+              <br>
               <li>
                 <h4 th:text="'Child has received '+ ${mandatoryVac} + ' out of 14 mandatory vaccinations, and '+ ${recommendedVac} + ' out of 9 recommended vaccinations so far.'"></h4>
               </li>
