@@ -27,14 +27,14 @@
               <label>Starting date: </label>
               <input class="form-control" type="date" th:field="*{startingDate}">
               <span class="error-msg" th:if="${#fields.hasErrors('startingDate')}">
-                The entered date is in the wrong format.
+                The entered date is empty or in the wrong format.
               </span>
             </div>
             <div class="form-group">
               <label>Ending date: </label>
               <input class="form-control" type="date" th:field="*{endingDate}">
               <span class="error-msg" th:if="${#fields.hasErrors('endingDate')}">
-                The entered date is in the wrong format.
+                The entered date is empty or in the wrong format.
               </span>
             </div>
             <div class="form-group">

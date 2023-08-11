@@ -20,7 +20,7 @@
               <label>Date: </label>
               <input class="form-control" type="date" th:field="*{date}">
               <span class="error-msg" th:if="${#fields.hasErrors('diagnosis')}">
-                The entered date is in the wrong format.
+                The entered date is empty or in the wrong format.
               </span>
             </div>
             <div class="form-group">
