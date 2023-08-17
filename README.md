@@ -16,23 +16,27 @@ The register consists of the following parts:
 ## Technical assumptions  
 Child Health Record web application is based on data on diseases, doctor visits and vaccinations in 2023, entered by the user and saved in the database. The entered data are validated in terms of whether they are not empty or the number of characters. In the cases of disease symptoms, prediscribed antibiotic or id of the disease to which the doctor’s visit realtes, the data is selected from a closed, drop-down list. 
 
-The application consists of the following views: 
-<div align="center">
-<table border="0">
- <tr>
-    <td>Diseases data list </td>
-    <td>Creating a new disease entry</td>
- </tr>
-   <tr>
-    <td>Medical appointments details list </td>
-    <td>Creating a new appointment entry </td>
- </tr>
-     <tr>
-    <td>Vaccination schedule </td>
-    <td>Statistics </td>
- </tr>
-</table>
-</div>
+The application consists of the following views:<br><br>
+      - diseases data list 
+      <p align="center">
+      <img src="src/main/resources/static/screens/diseaseRegister.PNG" width="800" height="564"/>
+      </p>
+      - creating a new disease entry<br><br>
+       <p align="center">
+      <img src="src/main/resources/static/screens/creatingDisease.PNG" width="800" height="599"/>
+      </p>
+      <br>
+    - medical appointments details list<br><br>
+       <p align="center">
+      <img src="src/main/resources/static/screens/medicalAppointments.PNG" width="800" height="502"/>
+      </p>
+    <br>
+    - creating a new appointment entry
+    <br>
+    - vaccination schedule
+    <br>
+    - statistics
+
 <br>
 
 ## Tech stack
