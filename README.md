@@ -31,11 +31,20 @@ The application consists of the following views:<br><br>
       <img src="src/main/resources/static/screens/medicalAppointments.PNG" width="800" height="502"/>
       </p>
     <br>
-    - creating a new appointment entry
+    - creating a new appointment entry<br><br>
+        <p align="center">
+      <img src="src/main/resources/static/screens/creatingAppointent.PNG" width="800" height="600"/>
+      </p>
     <br>
-    - vaccination schedule
+    - vaccination schedule<br><br>
+        <p align="center">
+      <img src="src/main/resources/static/screens/vaccinationShedule.PNG" width="800" height="730"/>
+      </p>
     <br>
-    - statistics
+    - statistics<br><br>
+       <p align="center">
+      <img src="src/main/resources/static/screens/statistics.PNG" width="800" height="686"/>
+      </p>
 
 <br>
 
