@@ -1,11 +1,11 @@
 package com.example.childhealthrecord.mapper;
 
 import com.example.childhealthrecord.entity.DiseaseEntity;
-import com.example.childhealthrecord.model.DiseaseModel;
+import com.example.childhealthrecord.dto.DiseaseDto;
 
 public class DiseaseMapper {
 
-    public static DiseaseEntity toEntity(DiseaseModel model){
+    public static DiseaseEntity toEntity(DiseaseDto model){
         DiseaseEntity entity = new DiseaseEntity();
         entity.setName(model.getName());
         entity.setStartingDate(model.getStartingDate());

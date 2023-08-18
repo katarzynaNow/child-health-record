@@ -2,7 +2,7 @@ package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.AppointmentEntity;
-import com.example.childhealthrecord.model.AppointmentModel;
+import com.example.childhealthrecord.dto.AppointmentDto;
 import com.example.childhealthrecord.service.AppointmentService;
 import com.example.childhealthrecord.service.DiseaseService;
 import jakarta.validation.Valid;
@@ -58,7 +58,7 @@ public class AppointmentsController {
      }
 
      @PostMapping("/create")
-    public String createAction(@Valid AppointmentModel newAppointment, BindingResult result, Model model){
+    public String createAction(@Valid AppointmentDto newAppointment, BindingResult result, Model model){
 
          if(result.hasErrors()){
              model.addAttribute(newAppointment);

@@ -2,15 +2,13 @@ package com.example.childhealthrecord.service;
 
 import com.example.childhealthrecord.entity.DiseaseEntity;
 import com.example.childhealthrecord.mapper.DiseaseMapper;
-import com.example.childhealthrecord.model.DiseaseModel;
+import com.example.childhealthrecord.dto.DiseaseDto;
 import com.example.childhealthrecord.repository.DiseaseRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class DiseaseService {
@@ -25,7 +23,7 @@ public class DiseaseService {
         return diseaseRepository.findAll();
     }
 
-    public void saveDiseaseModelToEntity(DiseaseModel diseaseModel){
+    public void saveDiseaseModelToEntity(DiseaseDto diseaseModel){
         DiseaseEntity diseaseEntity = DiseaseMapper.toEntity(diseaseModel);
 
         diseaseRepository.save(diseaseEntity);

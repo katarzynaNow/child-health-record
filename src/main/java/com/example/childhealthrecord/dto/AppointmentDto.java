@@ -1,4 +1,4 @@
-package com.example.childhealthrecord.model;
+package com.example.childhealthrecord.dto;
 
 import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.DiseaseEntity;
@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class AppointmentModel {
+public class AppointmentDto {
 
     @Size(min = 10, max = 10)
     private String date;
@@ -17,15 +17,13 @@ public class AppointmentModel {
     @Size(min=2, max=30)
     private String medicines;
 
-    @Enumerated(EnumType.STRING)
+
     private Antibiotic antibiotic;
 
     @Size(max=200)
     private String notes;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn
     private DiseaseEntity disease;
 
     public String getDate() {

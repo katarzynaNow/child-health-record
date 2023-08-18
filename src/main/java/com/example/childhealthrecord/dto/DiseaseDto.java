@@ -1,15 +1,10 @@
-package com.example.childhealthrecord.model;
+package com.example.childhealthrecord.dto;
 
 import com.example.childhealthrecord.entity.Symptom;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.format.annotation.DateTimeFormat;
 
-public class DiseaseModel {
+public class DiseaseDto {
 
     @Size(min=2, max=30)
     private String name;
@@ -20,13 +15,10 @@ public class DiseaseModel {
     @Size(min = 10, max = 10)
     private String endingDate;
 
-    @Enumerated(EnumType.STRING)
     private Symptom symptom1;
 
-    @Enumerated(EnumType.STRING)
     private Symptom symptom2;
 
-    @Enumerated(EnumType.STRING)
     private Symptom symptom3;
 
     public String getName() {

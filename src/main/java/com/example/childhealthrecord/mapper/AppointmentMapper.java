@@ -1,13 +1,11 @@
 package com.example.childhealthrecord.mapper;
 
 import com.example.childhealthrecord.entity.AppointmentEntity;
-import com.example.childhealthrecord.entity.DiseaseEntity;
-import com.example.childhealthrecord.model.AppointmentModel;
-import com.example.childhealthrecord.model.DiseaseModel;
+import com.example.childhealthrecord.dto.AppointmentDto;
 
 public class AppointmentMapper {
 
-    public static AppointmentEntity toEntity(AppointmentModel model){
+    public static AppointmentEntity toEntity(AppointmentDto model){
         AppointmentEntity entity = new AppointmentEntity();
         entity.setDate(model.getDate());
         entity.setDiagnosis(model.getDiagnosis());

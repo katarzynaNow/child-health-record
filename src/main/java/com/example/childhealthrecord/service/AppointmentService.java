@@ -1,11 +1,8 @@
 package com.example.childhealthrecord.service;
 
 import com.example.childhealthrecord.entity.AppointmentEntity;
-import com.example.childhealthrecord.entity.DiseaseEntity;
 import com.example.childhealthrecord.mapper.AppointmentMapper;
-import com.example.childhealthrecord.mapper.DiseaseMapper;
-import com.example.childhealthrecord.model.AppointmentModel;
-import com.example.childhealthrecord.model.DiseaseModel;
+import com.example.childhealthrecord.dto.AppointmentDto;
 import com.example.childhealthrecord.repository.AppointmentRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +21,7 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    public void saveAppointmentModelToEntity(AppointmentModel appointmentModel){
+    public void saveAppointmentModelToEntity(AppointmentDto appointmentModel){
         AppointmentEntity appointmentEntity = AppointmentMapper.toEntity(appointmentModel);
 
         appointmentRepository.save(appointmentEntity);
