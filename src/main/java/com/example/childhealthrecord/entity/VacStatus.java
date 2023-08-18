@@ -1,5 +1,10 @@
 package com.example.childhealthrecord.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum VacStatus {
     DONE ("done"),
     ARRANGED ("arranged"),
@@ -7,12 +12,4 @@ public enum VacStatus {
     NOT_APPLICABLE("n/a");
 
     private String name;
-
-    VacStatus(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
 }

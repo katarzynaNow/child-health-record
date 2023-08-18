@@ -1,5 +1,10 @@
 package com.example.childhealthrecord.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum Symptom {
     CHILLS ("chills"),
     COUGH ("cough"),
@@ -13,12 +18,4 @@ public enum Symptom {
     VOMITING ("vomiting");
 
     private String name;
-
-    Symptom(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
 }

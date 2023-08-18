@@ -1,6 +1,10 @@
 package com.example.childhealthrecord.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -8,6 +12,10 @@ import java.time.Instant;
 
 @Entity
 @Table(name="appointments")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class AppointmentEntity {
 
     @Id
@@ -43,89 +51,4 @@ public class AppointmentEntity {
     @JoinColumn
     private DiseaseEntity disease;
 
-
-    public AppointmentEntity() {
-    }
-
-    public AppointmentEntity(String date, String diagnosis, String medicines, Antibiotic antibiotic, String notes,
-                             DiseaseEntity disease) {
-        this.date = date;
-        this.diagnosis = diagnosis;
-        this.medicines = medicines;
-        this.antibiotic = antibiotic;
-        this.notes = notes;
-        this.disease = disease;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getDiagnosis() {
-        return diagnosis;
-    }
-
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
-    }
-
-    public String getMedicines() {
-        return medicines;
-    }
-
-    public void setMedicines(String medicines) {
-        this.medicines = medicines;
-    }
-
-    public Antibiotic getAntibiotic() {
-        return antibiotic;
-    }
-
-    public void setAntibiotic(Antibiotic antibiotic) {
-        this.antibiotic = antibiotic;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public DiseaseEntity getDisease() {
-        return disease;
-    }
-
-    public void setDisease(DiseaseEntity disease) {
-        this.disease = disease;
-    }
 }
