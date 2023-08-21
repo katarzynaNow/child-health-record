@@ -55,15 +55,15 @@
               <div class="col-3 text-center">
                 <img style="height: 150px; max-width: 150px " class="image-fluid rounded" th:src="@{/profiles/file/{id} (id=${p.id})}" >
               </div>
-              <div class="col-7 text-left">
+              <div class="col-5 text-left">
                 <br>
                 <h3 th:text="${p.name}"></h3>
                 <h5 th:text="${p.birthDate}"></h5>
 
               </div>
-              <div class="col-2">
-                <br>
-                <a th:href="@{/profiles/view/{id} (id=${p.id})}" class="btn btn-primary">Open profile</a>
+              <div class="col-4">
+                <a class="btn btn-primary btn-sm" th:href="@{/profiles/view/{id} (id=${p.id})}">Open profile</a>
+                <a class="btn btn-secondary btn-sm" th:href="@{/profiles/delete/{id}(id=${p.getId()})}">Delete profile</a>
               </div>
             </div>
           </div>
@@ -71,6 +71,7 @@
           <div class="col-2">
             <a th:href="@{/profiles/create}" class="btn btn-primary">Create new profile</a>
           </div>
+
 
 
         </div>

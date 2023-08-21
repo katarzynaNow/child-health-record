@@ -1,6 +1,7 @@
 package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.entity.ChildProfile;
+import com.example.childhealthrecord.entity.DiseaseEntity;
 import com.example.childhealthrecord.service.AppointmentService;
 import com.example.childhealthrecord.service.ChildProfileService;
 import com.example.childhealthrecord.service.DiseaseService;
@@ -35,9 +36,14 @@ public class ChildProfileController {
     }
 
     @GetMapping
-    public String profilesList(Model model){
+    public String profilesList(Model model, @RequestParam(required = false) Integer editedId){
         model.addAttribute("title", title);
         model.addAttribute("profiles", childProfileService.findAll());
+
+        if(editedId != null) {
+            model.addAttribute("editProfile", childProfileService.findById(editedId));
+        }
+
         return "profiles";
     }
 
@@ -67,4 +73,23 @@ public class ChildProfileController {
         model.addAttribute("profile", childProfileService.findById(id));
         return "diseaseRegister";
     }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id){
+        childProfileService.deleteById(id);
+        return "redirect:/profiles";
+    }
+
+  /*  @PostMapping("edit/{id}")
+    public String edit(ChildProfile profile, @PathVariable Integer id){
+        ChildProfile existing = childProfileService.findById(id);
+
+        existing.setName(profile.getName());
+        existing.setBirthDate(profile.getBirthDate());
+        existing.setPicture(profile.getPicture());
+
+        childProfileService.save(existing);
+        return "redirect:/profiles";
+    }*/
+
 }

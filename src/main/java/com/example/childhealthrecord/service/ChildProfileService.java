@@ -30,4 +30,7 @@ public class ChildProfileService {
         return childProfileRepository.findById(id).get();
     }
 
+    public void deleteById(Integer id) {
+        childProfileRepository.deleteById(id);
+    }
 }
