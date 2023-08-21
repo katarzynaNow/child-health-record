@@ -27,6 +27,9 @@
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item" th:classappend="${title == 'Profiles'} ? 'active' : ''">
+                <a class="nav-link" th:href="@{/profiles}">Profiles</a>
+            </li>
             <li class="nav-item" th:classappend="${title == 'Disease Register'} ? 'active' : ''">
                 <a class="nav-link" th:href="@{/diseaseRegister}">Disease Register</a>
             </li>
