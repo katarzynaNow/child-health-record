@@ -1,11 +1,13 @@
 package com.example.childhealthrecord.dto;
 
-import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.DiseaseEntity;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class AppointmentDto {
 
     @Size(min = 10, max = 10)
@@ -18,7 +20,7 @@ public class AppointmentDto {
     private String medicines;
 
 
-    private Antibiotic antibiotic;
+    private boolean antibiotic;
 
     @Size(max=200)
     private String notes;
@@ -26,51 +28,4 @@ public class AppointmentDto {
     @NotNull
     private DiseaseEntity disease;
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getDiagnosis() {
-        return diagnosis;
-    }
-
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
-    }
-
-    public String getMedicines() {
-        return medicines;
-    }
-
-    public void setMedicines(String medicines) {
-        this.medicines = medicines;
-    }
-
-    public Antibiotic getAntibiotic() {
-        return antibiotic;
-    }
-
-    public void setAntibiotic(Antibiotic antibiotic) {
-        this.antibiotic = antibiotic;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public DiseaseEntity getDisease() {
-        return disease;
-    }
-
-    public void setDisease(DiseaseEntity disease) {
-        this.disease = disease;
-    }
 }

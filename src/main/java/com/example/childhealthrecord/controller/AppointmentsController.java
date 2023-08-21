@@ -1,6 +1,5 @@
 package com.example.childhealthrecord.controller;
 
-import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.AppointmentEntity;
 import com.example.childhealthrecord.dto.AppointmentDto;
 import com.example.childhealthrecord.service.AppointmentService;
@@ -31,12 +30,10 @@ public class AppointmentsController {
     @GetMapping
     public String appointmentsPage(Model model, @RequestParam(required = false) Integer editedId){
         List<AppointmentEntity> appointments = appointmentService.findAll();
-        Antibiotic[] antibiotics = Antibiotic.values();
 
         model.addAttribute("title", title);
         model.addAttribute("appointments", appointments);
         model.addAttribute("editedId", editedId);
-        model.addAttribute("antibiotics", antibiotics);
 
         if(editedId != null){
             model.addAttribute("editAppointment", appointmentService.findById(editedId));
@@ -48,10 +45,8 @@ public class AppointmentsController {
     @GetMapping("/create")
     public String create (Model model){
         AppointmentEntity newAppointment = new AppointmentEntity();
-        Antibiotic[] antibiotics = Antibiotic.values();
 
         model.addAttribute("newAppointment", newAppointment);
-        model.addAttribute("antibiotics", antibiotics);
         model.addAttribute("diseasesId", diseaseService.diseasesIdList());
 
         return "createAppointment";
@@ -64,8 +59,6 @@ public class AppointmentsController {
              model.addAttribute(newAppointment);
              model.addAttribute("org.springframework.validation.BindingResult.newAppointment", result);
 
-             Antibiotic[] antibiotics = Antibiotic.values();
-             model.addAttribute("antibiotics", antibiotics);
              model.addAttribute("diseasesId", diseaseService.diseasesIdList());
 
              return "createAppointment";
@@ -90,7 +83,7 @@ public class AppointmentsController {
         existing.setDate(appointment.getDate());
         existing.setDiagnosis(appointment.getDiagnosis());
         existing.setMedicines(appointment.getMedicines());
-        existing.setAntibiotic(appointment.getAntibiotic());
+        existing.setAntibiotic(appointment.isAntibiotic());
         existing.setNotes(appointment.getNotes());
         existing.setDisease(appointment.getDisease());
 

@@ -36,7 +36,10 @@
                 <td th:text="${a.getDate()}"></td>
                 <td th:text="${a.getDiagnosis()}"></td>
                 <td th:text="${a.getMedicines()}"></td>
-                <td th:text="${#strings.toLowerCase(a.getAntibiotic())}"></td>
+                <td>
+                  <span th:if="${a.isAntibiotic() == true}" th:text="yes"></span>
+                  <span th:unless="${a.isAntibiotic() == true}" th:text="no"></span>
+                </td>
                 <td th:text="${a.getNotes()}"></td>
                 <td th:text="${a.getDisease().getId()}"></td>
                 <td class="row actions">
@@ -52,7 +55,8 @@
                   <td><input class="form-control" type="text" th:field="*{medicines}"></td>
                   <td>
                     <select class="form-control" th:field="*{antibiotic}">
-                      <option th:each="an: ${antibiotics}" th:value="${an}" th:text="${#strings.toLowerCase(an)}"></option>
+                      <option th:value="true">yes</option>
+                      <option th:value="false">no</option>
                     </select>
                   </td>
                   <td><input class="form-control" type="text" th:field="*{notes}"></td>

@@ -10,7 +10,7 @@ public class AppointmentMapper {
         entity.setDate(model.getDate());
         entity.setDiagnosis(model.getDiagnosis());
         entity.setMedicines(model.getMedicines());
-        entity.setAntibiotic(model.getAntibiotic());
+        entity.setAntibiotic(model.isAntibiotic());
         entity.setNotes(model.getNotes());
         entity.setDisease(model.getDisease());
 

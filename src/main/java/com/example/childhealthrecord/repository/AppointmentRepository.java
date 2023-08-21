@@ -1,6 +1,5 @@
 package com.example.childhealthrecord.repository;
 
-import com.example.childhealthrecord.entity.Antibiotic;
 import com.example.childhealthrecord.entity.AppointmentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 

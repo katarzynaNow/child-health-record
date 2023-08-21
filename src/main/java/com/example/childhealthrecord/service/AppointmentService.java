@@ -43,7 +43,7 @@ public class AppointmentService {
         List<AppointmentEntity> appointments = appointmentRepository.findAll();
         int counter = 0;
         for ( AppointmentEntity a: appointments) {
-            if (a.getAntibiotic().name().equals("YES") && a.getDate().substring(2,4).equals("23")){
+            if (a.isAntibiotic() && a.getDate().substring(2,4).equals("23")){
                 counter++;
             }
         }

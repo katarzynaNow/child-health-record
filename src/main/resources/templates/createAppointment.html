@@ -40,7 +40,8 @@
             <div class="form-group">
               <label>Antibiotic (select form the list): </label>
               <select class="form-control" th:field="*{antibiotic}">
-                <option th:each="an: ${antibiotics}" th:value="${an}" th:text="${#strings.toLowerCase(an)}"></option>
+                <option th:value="true">yes</option>
+                <option th:value="false">no</option>
               </select>
             </div>
             <div class="form-group">

@@ -32,9 +32,8 @@ public class AppointmentEntity {
     @Column(name = "medicines")
     private String medicines;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "antibiotic")
-    private Antibiotic antibiotic;
+    private boolean antibiotic;
 
     @Column(name = "notes")
     private String notes;
