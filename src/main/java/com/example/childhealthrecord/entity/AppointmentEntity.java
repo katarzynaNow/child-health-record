@@ -38,6 +38,14 @@ public class AppointmentEntity {
     @Column(name = "notes")
     private String notes;
 
+    @ManyToOne
+    @JoinColumn
+    private DiseaseEntity disease;
+
+    @ManyToOne
+    @JoinColumn
+    private ChildProfileEntity childProfile;
+
     @CreationTimestamp
     @Column(name = "created_at")
     private Instant createdAt;
@@ -45,9 +53,5 @@ public class AppointmentEntity {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Instant updatedAt;
-
-    @ManyToOne
-    @JoinColumn
-    private DiseaseEntity disease;
 
 }

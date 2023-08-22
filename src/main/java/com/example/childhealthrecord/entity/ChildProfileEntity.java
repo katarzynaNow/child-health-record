@@ -10,10 +10,10 @@ import java.time.Instant;
 import java.util.List;
 
 @Entity
-@Table(name="child_profile")
+@Table(name="children_profiles")
 @Getter
 @Setter
-public class ChildProfile {
+public class ChildProfileEntity {
 
     @Id
     @GeneratedValue
@@ -30,15 +30,15 @@ public class ChildProfile {
     @Column(name = "picture")
     private byte[] picture;
 
-    @OneToMany
+    @OneToMany(mappedBy = "childProfile")
     @Column(name = "diseases")
     private List<DiseaseEntity> diseases;
 
-    @OneToMany
+    @OneToMany(mappedBy = "childProfile")
     @Column(name = "appointments")
     private List<AppointmentEntity> appointments;
 
-    @OneToMany
+    @OneToMany(mappedBy = "childProfile")
     @Column(name = "vaccinations")
     private List<Vaccination> vaccinations;
 

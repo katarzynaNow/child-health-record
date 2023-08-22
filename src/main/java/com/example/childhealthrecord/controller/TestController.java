@@ -14,6 +14,6 @@ public class TestController {
 
      @GetMapping("/")
     public String showIndex(){
-        return "redirect:diseaseRegister";
+        return "redirect:profiles";
     }
 }

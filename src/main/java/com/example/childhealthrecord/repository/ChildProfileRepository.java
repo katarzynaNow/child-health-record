@@ -1,7 +1,7 @@
 package com.example.childhealthrecord.repository;
 
-import com.example.childhealthrecord.entity.ChildProfile;
+import com.example.childhealthrecord.entity.ChildProfileEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ChildProfileRepository extends JpaRepository<ChildProfile, Integer> {
+public interface ChildProfileRepository extends JpaRepository<ChildProfileEntity, Integer> {
 }

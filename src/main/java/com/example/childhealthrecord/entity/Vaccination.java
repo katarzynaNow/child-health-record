@@ -25,4 +25,8 @@ public class Vaccination {
 
     private String notes;
 
+    @ManyToOne
+    @JoinColumn
+    private ChildProfileEntity childProfile;
+
 }

@@ -1,7 +1,7 @@
 package com.example.childhealthrecord.controller;
 
-import com.example.childhealthrecord.entity.ChildProfile;
-import com.example.childhealthrecord.entity.DiseaseEntity;
+import com.example.childhealthrecord.dto.ChildProfileDto;
+import com.example.childhealthrecord.entity.ChildProfileEntity;
 import com.example.childhealthrecord.service.AppointmentService;
 import com.example.childhealthrecord.service.ChildProfileService;
 import com.example.childhealthrecord.service.DiseaseService;
@@ -49,15 +49,15 @@ public class ChildProfileController {
 
     @GetMapping("/create")
     public String create(Model model){
-        ChildProfile newProfile = new ChildProfile();
+        ChildProfileEntity newProfile = new ChildProfileEntity();
         model.addAttribute("newProfile", newProfile);
         return "createProfile";
     }
 
     @PostMapping("/create")
-    public String createAction(ChildProfile childProfile, @RequestParam("file") MultipartFile file) throws IOException{
+    public String createAction(ChildProfileDto childProfile, @RequestParam("file") MultipartFile file) throws IOException{
         childProfile.setPicture(file.getBytes());
-        childProfileService.save(childProfile);
+        childProfileService.saveChildProfileDtoToEntity(childProfile);
         return "redirect:/profiles";
     }
 
@@ -68,9 +68,9 @@ public class ChildProfileController {
                 .getPicture();
     }
 
-    @GetMapping("/view/{id}")
-    public String view (Model model, @PathVariable Integer id){
-        model.addAttribute("profile", childProfileService.findById(id));
+    @GetMapping("/view/{profileId}/diseaseRegister")
+    public String view (Model model, @PathVariable Integer profileId){
+        model.addAttribute("profile", childProfileService.findById(profileId));
         return "diseaseRegister";
     }
 

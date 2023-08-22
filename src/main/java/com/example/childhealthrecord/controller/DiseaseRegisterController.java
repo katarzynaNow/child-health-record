@@ -3,6 +3,7 @@ package com.example.childhealthrecord.controller;
 import com.example.childhealthrecord.entity.DiseaseEntity;
 import com.example.childhealthrecord.entity.Symptom;
 import com.example.childhealthrecord.dto.DiseaseDto;
+import com.example.childhealthrecord.service.ChildProfileService;
 import com.example.childhealthrecord.service.DiseaseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,20 +15,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/diseaseRegister")
+@RequestMapping("/profiles/view/{profileId}/diseaseRegister")
 public class DiseaseRegisterController {
 
     @Value("${app.title.disease}")
     private String title;
 
     private final DiseaseService diseaseService;
+    private final ChildProfileService childProfileService;
 
-    public DiseaseRegisterController(DiseaseService diseaseService) {
+    public DiseaseRegisterController(DiseaseService diseaseService, ChildProfileService childProfileService) {
         this.diseaseService = diseaseService;
+        this.childProfileService = childProfileService;
     }
 
     @GetMapping
-    public String diseaseRegisterPage(Model model, @RequestParam(required = false) Integer editedId){
+    public String diseaseRegisterPage(Model model,@PathVariable Integer profileId,
+                                      @RequestParam(required = false) Integer editedId){
         List<DiseaseEntity> diseases = diseaseService.findAll();
         Symptom[] symptoms = Symptom.values();
 
@@ -35,6 +39,7 @@ public class DiseaseRegisterController {
         model.addAttribute("title", title);
         model.addAttribute("symptoms", symptoms);
         model.addAttribute("editedId", editedId);
+        model.addAttribute("profile", childProfileService.findById(profileId));
 
         if(editedId != null) {
             model.addAttribute("editDisease", diseaseService.findById(editedId));
@@ -90,6 +95,4 @@ public class DiseaseRegisterController {
     diseaseService.save(existing);
     return "redirect:/diseaseRegister";
     }
-
-
 }

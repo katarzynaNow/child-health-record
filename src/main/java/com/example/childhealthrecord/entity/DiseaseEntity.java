@@ -49,6 +49,10 @@ public class DiseaseEntity {
     @Column(name="created_at")
     private Instant createdAt;
 
+    @ManyToOne
+    @JoinColumn
+    private ChildProfileEntity childProfile;
+
     @UpdateTimestamp
     @Column(name="updated_at")
     private Instant updatedAt;
