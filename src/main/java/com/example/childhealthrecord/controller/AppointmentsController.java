@@ -3,6 +3,7 @@ package com.example.childhealthrecord.controller;
 import com.example.childhealthrecord.entity.AppointmentEntity;
 import com.example.childhealthrecord.dto.AppointmentDto;
 import com.example.childhealthrecord.service.AppointmentService;
+import com.example.childhealthrecord.service.ChildProfileService;
 import com.example.childhealthrecord.service.DiseaseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,26 +15,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/appointments")
+@RequestMapping("/profiles/{profileId}/appointments")
 public class AppointmentsController {
     @Value("${app.title.appointments}")
     private String title;
 
     private final AppointmentService appointmentService;
     private final DiseaseService diseaseService;
+    private final ChildProfileService childProfileService;
 
-    public AppointmentsController(AppointmentService appointmentService, DiseaseService diseaseService) {
+    public AppointmentsController(AppointmentService appointmentService, DiseaseService diseaseService, ChildProfileService childProfileService) {
         this.appointmentService = appointmentService;
         this.diseaseService = diseaseService;
+        this.childProfileService = childProfileService;
     }
 
     @GetMapping
-    public String appointmentsPage(Model model, @RequestParam(required = false) Integer editedId){
+    public String appointmentsPage(Model model, @RequestParam(required = false) Integer editedId,
+                                   @PathVariable Integer profileId){
         List<AppointmentEntity> appointments = appointmentService.findAll();
 
         model.addAttribute("title", title);
         model.addAttribute("appointments", appointments);
         model.addAttribute("editedId", editedId);
+        model.addAttribute("profile", childProfileService.findById(profileId));
 
         if(editedId != null){
             model.addAttribute("editAppointment", appointmentService.findById(editedId));

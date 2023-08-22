@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/profiles/view/{profileId}/diseaseRegister")
+@RequestMapping("/profiles/{profileId}/diseaseRegister")
 public class DiseaseRegisterController {
 
     @Value("${app.title.disease}")
@@ -59,7 +59,8 @@ public class DiseaseRegisterController {
     }
 
     @PostMapping("/create")
-    public String createAction(@Valid DiseaseDto newDisease, BindingResult result, Model model){
+    public String createAction(@Valid DiseaseDto newDisease, BindingResult result, Model model,
+                               @PathVariable Integer profileId){
 
         if(result.hasErrors()){
             model.addAttribute(newDisease);
@@ -71,7 +72,8 @@ public class DiseaseRegisterController {
             return "createDisease";
         }
 
-        diseaseService.saveDiseaseModelToEntity(newDisease);
+        DiseaseEntity disease= diseaseService.saveDiseaseModelToEntity(newDisease);
+        //disease.setChildProfile(profileId);
         return "redirect:/diseaseRegister";
     }
 

@@ -68,11 +68,11 @@ public class ChildProfileController {
                 .getPicture();
     }
 
-    @GetMapping("/view/{profileId}/diseaseRegister")
+ /*   @GetMapping("/view/{profileId}/diseaseRegister")
     public String view (Model model, @PathVariable Integer profileId){
         model.addAttribute("profile", childProfileService.findById(profileId));
         return "diseaseRegister";
-    }
+    }*/
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id){

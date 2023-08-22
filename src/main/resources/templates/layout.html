@@ -31,13 +31,13 @@
                 <a class="nav-link" th:href="@{/profiles}">Profiles</a>
             </li>
             <li class="nav-item" th:classappend="${title == 'Disease Register'} ? 'active' : ''">
-                <a class="nav-link" th:href="@{/diseaseRegister}">Disease Register</a>
+                <a class="nav-link" th:href="@{/profiles/{profileId}/diseaseRegister}">Disease Register</a>
             </li>
             <li class="nav-item" th:classappend="${title == 'Medical Appointments'} ? 'active' : ''">
-                <a class="nav-link" th:href="@{/appointments}">Medical Appointments</a>
+                <a class="nav-link" th:href="@{/profiles/{profileId}/appointments}">Medical Appointments</a>
             </li>
             <li class="nav-item" th:classappend="${title == 'Vaccination Schedule'} ? 'active' : ''">
-                <a class="nav-link" th:href="@{/vaccination}">Vaccination Schedule</a>
+                <a class="nav-link" th:href="@{/profiles/{profileId}/vaccination}">Vaccination Schedule</a>
             </li>
             <li class="nav-item" th:classappend="${title == 'Statistics'} ? 'active' : ''">
                 <a class="nav-link" th:href="@{/statistics}">Statistics</a>

@@ -2,6 +2,7 @@ package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.entity.VacStatus;
 import com.example.childhealthrecord.entity.Vaccination;
+import com.example.childhealthrecord.service.ChildProfileService;
 import com.example.childhealthrecord.service.VaccinationService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,24 +12,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/vaccination")
+@RequestMapping("/profiles/{profileId}/vaccination")
 public class VaccinationController {
     @Value("${app.title.vaccination}")
     private String title;
 
     private final VaccinationService vaccinationService;
+    private final ChildProfileService childProfileService;
 
-    public VaccinationController(VaccinationService vaccinationService) {
+    public VaccinationController(VaccinationService vaccinationService, ChildProfileService childProfileService) {
         this.vaccinationService = vaccinationService;
+        this.childProfileService = childProfileService;
     }
 
     @GetMapping
-    public String vaccinationSchedulePage(Model model, @RequestParam(required = false) Integer editedId){
+    public String vaccinationSchedulePage(Model model, @RequestParam(required = false) Integer editedId,
+                                          @PathVariable Integer profileId){
         List<Vaccination> vaccinations = vaccinationService.findAll();
 
         model.addAttribute("vaccinations", vaccinations);
         model.addAttribute("title", title);
         model.addAttribute("editedId", editedId);
+        model.addAttribute("profile", childProfileService.findById(profileId));
 
         if(editedId != null) {
             model.addAttribute("editVaccination", vaccinationService.findById(editedId));

@@ -62,7 +62,9 @@
 
               </div>
               <div class="col-4">
-                <a class="btn btn-primary btn-sm" th:href="@{/profiles/view/{id}/diseaseRegister (id=${p.id})}">Open profile</a>
+                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/diseaseRegister (id=${p.id})}">Open profile</a>
+                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/appointments (id=${p.id})}">App</a>
+                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/vaccination (id=${p.id})}">Vac</a>
                 <a class="btn btn-secondary btn-sm" th:href="@{/profiles/delete/{id}(id=${p.getId()})}">Delete profile</a>
               </div>
             </div>

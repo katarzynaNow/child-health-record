@@ -23,10 +23,10 @@ public class DiseaseService {
         return diseaseRepository.findAll();
     }
 
-    public void saveDiseaseModelToEntity(DiseaseDto diseaseModel){
+    public DiseaseEntity saveDiseaseModelToEntity(DiseaseDto diseaseModel){
         DiseaseEntity diseaseEntity = DiseaseMapper.toEntity(diseaseModel);
 
-        diseaseRepository.save(diseaseEntity);
+        return diseaseRepository.save(diseaseEntity);
     }
 
     public void save (DiseaseEntity disease){

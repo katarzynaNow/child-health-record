@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Table(name="appointments")
@@ -42,9 +43,8 @@ public class AppointmentEntity {
     @JoinColumn
     private DiseaseEntity disease;
 
-    @ManyToOne
-    @JoinColumn
-    private ChildProfileEntity childProfile;
+    @OneToMany
+    private List<ChildProfileEntity> childProfile;
 
     @CreationTimestamp
     @Column(name = "created_at")

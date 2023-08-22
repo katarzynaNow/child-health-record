@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "vaccinations")
 @Getter
@@ -25,8 +27,7 @@ public class Vaccination {
 
     private String notes;
 
-    @ManyToOne
-    @JoinColumn
-    private ChildProfileEntity childProfile;
+    @OneToMany
+    private List<ChildProfileEntity> childProfile;
 
 }
