@@ -49,12 +49,13 @@ public class DiseaseRegisterController {
     }
 
     @GetMapping("/create")
-    public String create (Model model){
+    public String create (Model model, @PathVariable Integer profileId){
         DiseaseEntity newDisease = new DiseaseEntity();
         Symptom[] symptoms = Symptom.values();
 
         model.addAttribute("newDisease", newDisease);
         model.addAttribute("symptoms", symptoms);
+        model.addAttribute("profile", childProfileService.findById(profileId));
         return "createDisease";
     }
 
@@ -73,14 +74,15 @@ public class DiseaseRegisterController {
         }
 
         DiseaseEntity disease= diseaseService.saveDiseaseModelToEntity(newDisease);
-        //disease.setChildProfile(profileId);
-        return "redirect:/diseaseRegister";
+        disease.setChild(childProfileService.findById(profileId));
+        diseaseService.save(disease);
+        return "redirect:/";//todo redirect
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id){
         diseaseService.deleteById(id);
-        return "redirect:/diseaseRegister";
+        return "redirect:/";
     }
 
     @PostMapping("/edit/{id}")
@@ -95,6 +97,6 @@ public class DiseaseRegisterController {
     existing.setSymptom3(disease.getSymptom3());
 
     diseaseService.save(existing);
-    return "redirect:/diseaseRegister";
+    return "redirect:/";
     }
 }

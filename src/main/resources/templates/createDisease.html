@@ -15,7 +15,7 @@
 
           <h1 th:text="${title}"></h1>
 
-          <form method="post" th:action="@{/diseaseRegister/create}" th:object="${newDisease}">
+          <form method="post" th:action="@{/profiles/{profileId}/diseaseRegister/create (profileId = ${profile.id})}" th:object="${newDisease}">
             <div class="form-group">
               <label>Name: </label>
               <input class="form-control" type="text" th:field="*{name}" >

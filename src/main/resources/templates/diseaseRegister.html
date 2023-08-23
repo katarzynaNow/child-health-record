@@ -33,6 +33,7 @@
             <tbody>
             <tr th:each="d : ${diseases}" class="text-center">
               <div th:if="${d.getId() != editedId}">
+                <div th:if="${d.getChild().getId() == profile.id}">
                 <td th:text="${d.getId()}"></td>
                 <td th:text="${d.getName()}"></td>
                 <td th:text="${d.getStartingDate()}"></td>
@@ -45,12 +46,13 @@
                   <span th:unless="${d.getAppointments().isEmpty() == true}" th:text="yes"></span>
                 </td>
                 <td class="row actions">
-                  <a class="btn btn-primary btn-sm col" th:href="@{/diseaseRegister(editedId=${d.getId()})}">Edit</a>
-                  <a class="btn btn-secondary btn-sm col" th:href="@{/diseaseRegister/delete/{id}(id=${d.getId()})}">Delete</a>
+                  <a class="btn btn-primary btn-sm col" th:href="@{/profiles/{profileId}/diseaseRegister(editedId=${d.getId()}, profileId = ${profile.id})}">Edit</a>
+                  <a class="btn btn-secondary btn-sm col" th:href="@{/profiles/{profileId}/diseaseRegister/delete/{id}(id=${d.getId()}, profileId = ${profile.id})}">Delete</a>
                 </td>
               </div>
+              </div>
               <div th:unless="${d.getId() != editedId}">
-                <form method="post" th:action="@{/diseaseRegister/edit/{id}(id=${editDisease.getId()})}" th:object="${editDisease}">
+                <form method="post" th:action="@{/profiles/{profileId}/diseaseRegister/edit/{id}(id=${editDisease.getId()}, profileId = ${profile.id})}" th:object="${editDisease}">
                   <td><input class="form-control" type="number" th:field="*{id}" disabled> </td>
                   <td><input class="form-control" type="text" th:field="*{name}"></td>
                   <td><input class="form-control" type="date" th:field="*{startingDate}"></td>
@@ -79,7 +81,7 @@
           </table>
           <br>
           <div class="row col-2">
-            <a class="btn btn-primary" th:href="@{/diseaseRegister/create}">Create new entry</a>
+            <a class="btn btn-primary" th:href="@{/profiles/{profileId}/diseaseRegister/create (profileId = ${profile.id})}">Create new entry</a>
           </div>
 
 

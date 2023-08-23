@@ -27,7 +27,8 @@ public class Vaccination {
 
     private String notes;
 
-    @OneToMany
-    private List<ChildProfileEntity> childProfile;
+    @ManyToOne
+    @JoinColumn(name = "child_id")
+    private ChildProfileEntity child;
 
 }

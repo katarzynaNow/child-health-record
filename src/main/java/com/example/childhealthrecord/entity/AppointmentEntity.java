@@ -43,8 +43,9 @@ public class AppointmentEntity {
     @JoinColumn
     private DiseaseEntity disease;
 
-    @OneToMany
-    private List<ChildProfileEntity> childProfile;
+    @ManyToOne
+    @JoinColumn(name = "child_id")
+    private ChildProfileEntity child;
 
     @CreationTimestamp
     @Column(name = "created_at")

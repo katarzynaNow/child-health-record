@@ -30,17 +30,14 @@ public class ChildProfileEntity {
     @Column(name = "picture")
     private byte[] picture;
 
-    @ManyToOne
-    @JoinColumn
-    private DiseaseEntity disease;
+    @OneToMany(mappedBy = "child")
+    private List<DiseaseEntity> disease;
 
-    @ManyToOne
-    @JoinColumn
-    private AppointmentEntity appointment;
+    @OneToMany(mappedBy = "child")
+    private List<AppointmentEntity> appointment;
 
-    @ManyToOne
-    @JoinColumn
-    private Vaccination vaccination;
+    @OneToMany(mappedBy = "child")
+    private List<Vaccination> vaccination;
 
     @CreationTimestamp
     @Column(name = "created_at")
