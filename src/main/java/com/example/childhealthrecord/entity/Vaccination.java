@@ -2,6 +2,7 @@ package com.example.childhealthrecord.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Table(name = "vaccinations")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Vaccination {
 
     @Id
@@ -31,4 +33,12 @@ public class Vaccination {
     @JoinColumn(name = "child_id")
     private ChildProfileEntity child;
 
+    public Vaccination(String scope, String name, String childrenAgeInMonths, VacStatus status, String notes, ChildProfileEntity child) {
+        this.scope = scope;
+        this.name = name;
+        this.childrenAgeInMonths = childrenAgeInMonths;
+        this.status = status;
+        this.notes = notes;
+        this.child = child;
+    }
 }

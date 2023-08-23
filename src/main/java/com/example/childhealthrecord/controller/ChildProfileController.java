@@ -57,7 +57,7 @@ public class ChildProfileController {
     @PostMapping("/create")
     public String createAction(ChildProfileDto childProfile, @RequestParam("file") MultipartFile file) throws IOException{
         childProfile.setPicture(file.getBytes());
-        childProfileService.saveChildProfileDtoToEntity(childProfile);
+        ChildProfileEntity childProfileEntity= childProfileService.saveChildProfileDtoToEntity(childProfile);
         return "redirect:/profiles";
     }
 

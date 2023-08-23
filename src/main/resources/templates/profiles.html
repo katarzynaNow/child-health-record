@@ -55,16 +55,16 @@
               <div class="col-3 text-center">
                 <img style="height: 150px; max-width: 150px " class="image-fluid rounded" th:src="@{/profiles/file/{id} (id=${p.id})}" >
               </div>
-              <div class="col-5 text-left">
+              <div class="col-3 text-left">
                 <br>
                 <h3 th:text="${p.name}"></h3>
                 <h5 th:text="${p.birthDate}"></h5>
 
               </div>
-              <div class="col-4">
-                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/diseaseRegister (id=${p.id})}">Open profile</a>
-                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/appointments (id=${p.id})}">App</a>
-                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/vaccination (id=${p.id})}">Vac</a>
+              <div class="col-6">
+                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/diseaseRegister (id=${p.id})}">Disease Register</a>
+                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/appointments (id=${p.id})}">Appointments</a>
+                <a class="btn btn-primary btn-sm" th:href="@{/profiles/{id}/vaccination (id=${p.id})}">Vaccination schedule</a>
                 <a class="btn btn-secondary btn-sm" th:href="@{/profiles/delete/{id}(id=${p.getId()})}">Delete profile</a>
               </div>
             </div>

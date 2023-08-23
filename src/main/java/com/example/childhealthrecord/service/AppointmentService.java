@@ -21,10 +21,10 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    public void saveAppointmentModelToEntity(AppointmentDto appointmentModel){
+    public AppointmentEntity saveAppointmentModelToEntity(AppointmentDto appointmentModel){
         AppointmentEntity appointmentEntity = AppointmentMapper.toEntity(appointmentModel);
 
-        appointmentRepository.save(appointmentEntity);
+        return appointmentRepository.save(appointmentEntity);
     }
 
     public void save (AppointmentEntity appointment){

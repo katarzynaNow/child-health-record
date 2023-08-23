@@ -2,6 +2,7 @@ package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.entity.AppointmentEntity;
 import com.example.childhealthrecord.dto.AppointmentDto;
+import com.example.childhealthrecord.entity.DiseaseEntity;
 import com.example.childhealthrecord.service.AppointmentService;
 import com.example.childhealthrecord.service.ChildProfileService;
 import com.example.childhealthrecord.service.DiseaseService;
@@ -48,37 +49,41 @@ public class AppointmentsController {
     }
 
     @GetMapping("/create")
-    public String create (Model model){
+    public String create (Model model, @PathVariable Integer profileId){
         AppointmentEntity newAppointment = new AppointmentEntity();
 
         model.addAttribute("newAppointment", newAppointment);
         model.addAttribute("diseasesId", diseaseService.diseasesIdList());
+        model.addAttribute("profile", childProfileService.findById(profileId));
 
         return "createAppointment";
      }
 
      @PostMapping("/create")
-    public String createAction(@Valid AppointmentDto newAppointment, BindingResult result, Model model){
+    public String createAction(@Valid AppointmentDto newAppointment, BindingResult result, Model model,
+                               @PathVariable Integer profileId){
 
          if(result.hasErrors()){
              model.addAttribute(newAppointment);
              model.addAttribute("org.springframework.validation.BindingResult.newAppointment", result);
-
              model.addAttribute("diseasesId", diseaseService.diseasesIdList());
 
              return "createAppointment";
          }
+         model.addAttribute("profile", childProfileService.findById(profileId));
 
-        appointmentService.saveAppointmentModelToEntity(newAppointment);
+         AppointmentEntity appointment = appointmentService.saveAppointmentModelToEntity(newAppointment);
+         appointment.setChild(childProfileService.findById(profileId));
+         appointmentService.save(appointment);
 
-        return "redirect:/appointments";
+        return "redirect:/";
      }
 
      @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id){
         appointmentService.deleteById(id);
 
-         return "redirect:/appointments";
+         return "redirect:/";
      }
 
      @PostMapping("/edit/{id}")
@@ -94,6 +99,6 @@ public class AppointmentsController {
 
         appointmentService.save(existing);
 
-        return "redirect:/appointments";
+        return "redirect:/";
      }
 }

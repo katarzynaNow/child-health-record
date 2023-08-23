@@ -35,6 +35,7 @@ public class VaccinationController {
         model.addAttribute("editedId", editedId);
         model.addAttribute("profile", childProfileService.findById(profileId));
 
+
         if(editedId != null) {
             model.addAttribute("editVaccination", vaccinationService.findById(editedId));
         }
@@ -44,10 +45,11 @@ public class VaccinationController {
 
     @GetMapping("/update")
     public String updateStatus(@RequestParam Integer id, @RequestParam VacStatus vacStatus){
+
         Vaccination existing = vaccinationService.findById(id);
         existing.setStatus(vacStatus);
         vaccinationService.save(existing);
-        return "redirect:/vaccination";
+        return "redirect:/";
     }
 
     @PostMapping("/edit/{id}")
@@ -56,6 +58,6 @@ public class VaccinationController {
         existing.setNotes(notes);
 
         vaccinationService.save(existing);
-        return "redirect:/vaccination";
+        return "redirect:/";
     }
 }

@@ -15,7 +15,7 @@
 
           <h1 th:text="${title}"></h1>
 
-          <form method="post" th:action="@{/appointments/create}" th:object="${newAppointment}">
+          <form method="post" th:action="@{/profiles/{profileId}/appointments/create (profileId = ${profile.id})}" th:object="${newAppointment}">
             <div class="form-group">
               <label>Date: </label>
               <input class="form-control" type="date" th:field="*{date}">

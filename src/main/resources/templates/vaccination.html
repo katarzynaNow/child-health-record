@@ -31,6 +31,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="vacc : ${vaccinations}" class="text-center">
+                            <div th:if="${vacc.getChild().getId() == profile.id}">
                             <div th:if="${vacc.getId() != editedId}">
                             <td th:text="${vacc.getScope()}"></td>
                             <td th:text="${vacc.getChildrenAgeInMonths()}"></td>
@@ -38,21 +39,22 @@
                             <td th:text="${vacc.getStatus().getName()}"></td>
                             <td th:text="${vacc.getNotes()}"></td>
                                 <td>
-                                    <a class="btn btn-outline-primary btn-sm" th:href="@{/vaccination(editedId=${vacc.getId()})}">edit notes</a>
+                                    <a class="btn btn-outline-primary btn-sm" th:href="@{/profiles/{profileId}/vaccination(editedId=${vacc.getId()}, profileId = ${profile.id})}">edit notes</a>
                             </td>
                             <td>
                                 <a th:if="${vacc.getStatus().name().equals('TO_ARRANGE')}" class="btn btn-success btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='DONE')}">done</a>
+                                   th:href="@{/profiles/{profileId}/vaccination/update(id=${vacc.getId()},vacStatus='DONE', profileId = ${profile.id})}">done</a>
                                 <a th:if="${vacc.getStatus().name().equals('ARRANGED')}" class="btn btn-success btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='DONE')}">done</a>
+                                   th:href="@{/profiles/{profileId}/vaccination/update(id=${vacc.getId()}, vacStatus='DONE', profileId = ${profile.id})}">done</a>
                                 <a th:if="${vacc.getStatus().name().equals('TO_ARRANGE')}" class="btn btn-primary btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='ARRANGED')}">arranged</a>
+                                   th:href="@{/profiles/{profileId}/vaccination/update(id=${vacc.getId()}, vacStatus='ARRANGED', profileId = ${profile.id})}">arranged</a>
                                 <a th:if="${vacc.getStatus().name().equals('TO_ARRANGE')}" class="btn btn-secondary btn-sm"
-                                   th:href="@{/vaccination/update(id=${vacc.getId()}, vacStatus='NOT_APPLICABLE')}">n/a</a>
+                                   th:href="@{/profiles/{profileId}/vaccination/update(id=${vacc.getId()}, vacStatus='NOT_APPLICABLE', profileId = ${profile.id})}">n/a</a>
                             </td>
                             </div>
+                            </div>
                             <div th:unless="${vacc.getId() != editedId}">
-                                <form method="post" th:action="@{/vaccination/edit/{id}(id=${editVaccination.getId()})}" th:object="${editVaccination}">
+                                <form method="post" th:action="@{/profiles/{profileId}/vaccination/edit/{id}(id=${editVaccination.getId()}, profileId = ${profile.id})}" th:object="${editVaccination}">
                                     <td><input class="form-control" type="text" th:field="*{scope}" disabled> </td>
                                     <td><input class="form-control" type="text" th:field="*{childrenAgeInMonths}" disabled> </td>
                                     <td><input class="form-control" type="text" th:field="*{name}" disabled> </td>
