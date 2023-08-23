@@ -41,8 +41,8 @@ public class DiseaseService {
         return diseaseRepository.findById(id).get();
     }
 
-    public int[] daysInMonthsSick(){
-        List<DiseaseEntity> diseases = diseaseRepository.findAll();
+    public int[] daysInMonthsSick(Integer childId){
+        List<DiseaseEntity> diseases = diseaseRepository.findByChildId(childId);
         int[] sickDaysEveryMonth = new int[12];
 
         for (int i = 1; i < 13; i++) {
@@ -94,8 +94,8 @@ public class DiseaseService {
         return (sickDaysInYear * 100)/dayOfYear;
     }
 
-    public List<Integer> diseasesIdList() {
-        List<DiseaseEntity> diseases = diseaseRepository.findAll();
+    public List<Integer> diseasesIdList(Integer profileId) {
+        List<DiseaseEntity> diseases = diseaseRepository.findByChildId(profileId);
         List<Integer> diseasesId = new ArrayList<>();
 
         for (DiseaseEntity d : diseases) {

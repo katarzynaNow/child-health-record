@@ -53,7 +53,7 @@ public class AppointmentsController {
         AppointmentEntity newAppointment = new AppointmentEntity();
 
         model.addAttribute("newAppointment", newAppointment);
-        model.addAttribute("diseasesId", diseaseService.diseasesIdList());
+        model.addAttribute("diseasesId", diseaseService.diseasesIdList(profileId));
         model.addAttribute("profile", childProfileService.findById(profileId));
 
         return "createAppointment";
@@ -66,7 +66,7 @@ public class AppointmentsController {
          if(result.hasErrors()){
              model.addAttribute(newAppointment);
              model.addAttribute("org.springframework.validation.BindingResult.newAppointment", result);
-             model.addAttribute("diseasesId", diseaseService.diseasesIdList());
+             model.addAttribute("diseasesId", diseaseService.diseasesIdList(profileId));
 
              return "createAppointment";
          }
