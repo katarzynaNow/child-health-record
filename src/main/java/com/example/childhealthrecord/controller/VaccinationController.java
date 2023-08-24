@@ -49,7 +49,7 @@ public class VaccinationController {
         Vaccination existing = vaccinationService.findById(id);
         existing.setStatus(vacStatus);
         vaccinationService.save(existing);
-        return "redirect:/";
+        return "redirect:/profiles/{profileId}/vaccination";
     }
 
     @PostMapping("/edit/{id}")
@@ -58,6 +58,6 @@ public class VaccinationController {
         existing.setNotes(notes);
 
         vaccinationService.save(existing);
-        return "redirect:/";
+        return "redirect:/profiles/{profileId}/vaccination";
     }
 }

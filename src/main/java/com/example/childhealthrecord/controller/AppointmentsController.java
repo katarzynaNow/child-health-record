@@ -76,14 +76,14 @@ public class AppointmentsController {
          appointment.setChild(childProfileService.findById(profileId));
          appointmentService.save(appointment);
 
-        return "redirect:/";
+        return "redirect:/profiles/{profileId}/appointments";
      }
 
      @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id){
         appointmentService.deleteById(id);
 
-         return "redirect:/";
+         return "redirect:/profiles/{profileId}/appointments";
      }
 
      @PostMapping("/edit/{id}")
@@ -99,6 +99,6 @@ public class AppointmentsController {
 
         appointmentService.save(existing);
 
-        return "redirect:/";
+        return "redirect:/profiles/{profileId}/appointments";
      }
 }

@@ -39,6 +39,7 @@ public class DiseaseRegisterController {
         model.addAttribute("title", title);
         model.addAttribute("symptoms", symptoms);
         model.addAttribute("editedId", editedId);
+        model.addAttribute("profileId", profileId);
         model.addAttribute("profile", childProfileService.findById(profileId));
 
         if(editedId != null) {
@@ -63,6 +64,8 @@ public class DiseaseRegisterController {
     public String createAction(@Valid DiseaseDto newDisease, BindingResult result, Model model,
                                @PathVariable Integer profileId){
 
+        model.addAttribute("profileId", profileId);
+
         if(result.hasErrors()){
             model.addAttribute(newDisease);
             model.addAttribute("org.springframework.validation.BindingResult.newDisease", result);
@@ -76,13 +79,13 @@ public class DiseaseRegisterController {
         DiseaseEntity disease= diseaseService.saveDiseaseModelToEntity(newDisease);
         disease.setChild(childProfileService.findById(profileId));
         diseaseService.save(disease);
-        return "redirect:/";//todo redirect
+        return "redirect:/profiles/{profileId}/diseaseRegister";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id){
         diseaseService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/profiles/{profileId}/diseaseRegister";
     }
 
     @PostMapping("/edit/{id}")
@@ -97,6 +100,6 @@ public class DiseaseRegisterController {
     existing.setSymptom3(disease.getSymptom3());
 
     diseaseService.save(existing);
-    return "redirect:/";
+    return "redirect:/profiles/{profileId}/diseaseRegister";
     }
 }
