@@ -47,6 +47,26 @@ public class ChildProfileService {
         list.add(new Vaccination("mandatory", "BCG","0", VacStatus.TO_ARRANGE, "",  entity));
         list.add(new Vaccination("mandatory", "6in1","0", VacStatus.TO_ARRANGE, "",  entity));
         list.add(new Vaccination("mandatory", "Pneumococci","0", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "Rotavirus","2", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "Meningococci","2", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "6in1","4", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "Pneumococci","4", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "Rotavirus","4", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "Meningococci","4", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "6in1","5 - 6", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "Rotavirus","5 - 6", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "Hepatitis B","7", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "Meningococci","7", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "MMR","13 - 15", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "Pneumococci","13 - 15", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "Meningococci","13 - 15", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "Chickenpox","13 - 15", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "KZM","13 - 15", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("mandatory", "6in1","16 - 18", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "Chickenpox","13 - 15", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "Hepatitis A","24", VacStatus.TO_ARRANGE, "",  entity));
+        list.add(new Vaccination("recommended", "Hepatitis A","30 - 36", VacStatus.TO_ARRANGE, "",  entity));
+
         vaccinationRepository.saveAll(list);
 
         return entity;
