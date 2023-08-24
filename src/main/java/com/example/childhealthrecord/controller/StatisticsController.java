@@ -47,13 +47,13 @@ public class StatisticsController {
         model.addAttribute("sickPercentage",sickPercentage);
         model.addAttribute("data", data);
 
-        model.addAttribute("antibiotics", appointmentService.howManyAntibiotics());
+        model.addAttribute("antibiotics", appointmentService.howManyAntibiotics(profileId));
 
         model.addAttribute("monthsLabels", months);
         model.addAttribute("sickDaysEveryMonthData", sickDaysEveryMonthData );
 
-        model.addAttribute("mandatoryVac", vaccinationService.howManyMandatoryVaccinations());
-        model.addAttribute("recommendedVac", vaccinationService.howManyRecommendedVaccinations());
+        model.addAttribute("mandatoryVac", vaccinationService.howManyMandatoryVaccinations(profileId));
+        model.addAttribute("recommendedVac", vaccinationService.howManyRecommendedVaccinations(profileId));
 
         model.addAttribute("profile", childProfileService.findById(profileId));
 

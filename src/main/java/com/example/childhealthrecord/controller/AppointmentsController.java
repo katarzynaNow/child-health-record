@@ -71,6 +71,7 @@ public class AppointmentsController {
              return "createAppointment";
          }
          model.addAttribute("profile", childProfileService.findById(profileId));
+         model.addAttribute("profileId", profileId);
 
          AppointmentEntity appointment = appointmentService.saveAppointmentModelToEntity(newAppointment);
          appointment.setChild(childProfileService.findById(profileId));

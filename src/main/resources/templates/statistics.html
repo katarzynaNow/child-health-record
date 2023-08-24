@@ -14,13 +14,12 @@
         <div class="col-md-12">
 
           <h1 th:text="${title}"></h1>
-          <h3 th:text="${profile.name}"></h3>
           <h5 th:text="${currentDate}"></h5>
           <br><br>
           <div>
             <ul>
               <li>
-                <h4 th:text="'From the beginning of 2023 until this day, child has been sick for ' + ${sickDaysInYear} + ' days, which is ' + ${sickPercentage} + '% of the time.'"></h4>
+                <h4 th:text="'From the beginning of 2023 until this day, ' + ${profile.name} + ' has been sick for ' + ${sickDaysInYear} + ' days, which is ' + ${sickPercentage} + '% of the time.'"></h4>
                 <br>
 
                 <div>
@@ -90,7 +89,7 @@
               </li>
               <br>
               <li>
-                <h4 th:text="'Child has received '+ ${mandatoryVac} + ' out of 14 mandatory vaccinations, and '+ ${recommendedVac} + ' out of 9 recommended vaccinations so far.'"></h4>
+                <h4 th:text="${profile.name} + ' has received '+ ${mandatoryVac} + ' out of 14 mandatory vaccinations, and '+ ${recommendedVac} + ' out of 9 recommended vaccinations so far.'"></h4>
               </li>
             </ul>
           </div>

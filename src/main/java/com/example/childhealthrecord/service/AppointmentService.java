@@ -39,8 +39,8 @@ public class AppointmentService {
         return appointmentRepository.findById(id).get();
     }
 
-    public int howManyAntibiotics(){
-        List<AppointmentEntity> appointments = appointmentRepository.findAll();
+    public int howManyAntibiotics(Integer childId){
+        List<AppointmentEntity> appointments = appointmentRepository.findByChildId(childId);
         int counter = 0;
         for ( AppointmentEntity a: appointments) {
             if (a.isAntibiotic() && a.getDate().substring(2,4).equals("23")){

@@ -27,8 +27,8 @@ public class VaccinationService {
         vaccinationRepository.save(vaccination);
     }
 
-    public int howManyMandatoryVaccinations(){
-        List<Vaccination> vaccinations = vaccinationRepository.findAll();
+    public int howManyMandatoryVaccinations(Integer childId){
+        List<Vaccination> vaccinations = vaccinationRepository.findByChildId(childId);
         int counter = 0;
 
         for (Vaccination v: vaccinations) {
@@ -39,8 +39,8 @@ public class VaccinationService {
         return counter;
     }
 
-    public int howManyRecommendedVaccinations(){
-        List<Vaccination> vaccinations = vaccinationRepository.findAll();
+    public int howManyRecommendedVaccinations(Integer childId){
+        List<Vaccination> vaccinations = vaccinationRepository.findByChildId(childId);
         int counter = 0;
 
         for (Vaccination v: vaccinations) {
