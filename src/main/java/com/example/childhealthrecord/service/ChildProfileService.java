@@ -40,7 +40,7 @@ public class ChildProfileService {
         childProfileRepository.deleteById(id);
     }
 
-    public ChildProfileEntity saveChildProfileDtoToEntity(ChildProfileDto childProfileDto){
+    public void saveChildProfileDtoToEntity(ChildProfileDto childProfileDto){
         ChildProfileEntity entity = childProfileRepository.save(ChildProfileMapper.toEntity(childProfileDto));
         List<Vaccination> list = new ArrayList<>();
         list.add(new Vaccination("mandatory", "Hepatitis B","0", VacStatus.TO_ARRANGE, "",  entity));
@@ -68,7 +68,5 @@ public class ChildProfileService {
         list.add(new Vaccination("recommended", "Hepatitis A","30 - 36", VacStatus.TO_ARRANGE, "",  entity));
 
         vaccinationRepository.saveAll(list);
-
-        return entity;
     }
 }

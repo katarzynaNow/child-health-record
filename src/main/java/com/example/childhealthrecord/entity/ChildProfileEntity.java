@@ -36,7 +36,7 @@ public class ChildProfileEntity {
     @OneToMany(mappedBy = "child")
     private List<AppointmentEntity> appointment;
 
-    @OneToMany(mappedBy = "child")
+    @OneToMany(mappedBy = "child", cascade = CascadeType.ALL)
     private List<Vaccination> vaccination;
 
     @CreationTimestamp

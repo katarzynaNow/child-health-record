@@ -6,9 +6,11 @@ import com.example.childhealthrecord.service.AppointmentService;
 import com.example.childhealthrecord.service.ChildProfileService;
 import com.example.childhealthrecord.service.DiseaseService;
 import com.example.childhealthrecord.service.VaccinationService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -55,9 +57,18 @@ public class ChildProfileController {
     }
 
     @PostMapping("/create")
-    public String createAction(ChildProfileDto childProfile, @RequestParam("file") MultipartFile file) throws IOException{
-        childProfile.setPicture(file.getBytes());
-        ChildProfileEntity childProfileEntity= childProfileService.saveChildProfileDtoToEntity(childProfile);
+    public String createAction(@Valid ChildProfileDto newProfile, BindingResult result, Model model,
+                               @RequestParam("file") MultipartFile file) throws IOException{
+
+        if(result.hasErrors()){
+            model.addAttribute(newProfile);
+            model.addAttribute("org.springframework.validation.BindingResult.newProfile", result);
+
+            return "createProfile";
+        }
+
+        newProfile.setPicture(file.getBytes());
+        childProfileService.saveChildProfileDtoToEntity(newProfile);
         return "redirect:/profiles";
     }
 
@@ -68,28 +79,11 @@ public class ChildProfileController {
                 .getPicture();
     }
 
- /*   @GetMapping("/view/{profileId}/diseaseRegister")
-    public String view (Model model, @PathVariable Integer profileId){
-        model.addAttribute("profile", childProfileService.findById(profileId));
-        return "diseaseRegister";
-    }*/
-
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id){
         childProfileService.deleteById(id);
         return "redirect:/profiles";
     }
 
-  /*  @PostMapping("edit/{id}")
-    public String edit(ChildProfile profile, @PathVariable Integer id){
-        ChildProfile existing = childProfileService.findById(id);
-
-        existing.setName(profile.getName());
-        existing.setBirthDate(profile.getBirthDate());
-        existing.setPicture(profile.getPicture());
-
-        childProfileService.save(existing);
-        return "redirect:/profiles";
-    }*/
 
 }
