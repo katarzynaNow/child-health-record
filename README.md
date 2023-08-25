@@ -19,26 +19,26 @@ Child Health Record web application is based on data on diseases, doctor visits 
 The application consists of the following views:<br><br>
       - diseases data list 
       <p align="center">
-      <img src="src/main/resources/static/screens/diseaseRegister.PNG" width="800" height="564"/>
+      <img src="src/main/resources/static/screens/disease_register.PNG" width="800" height="478"/>
       </p>
       - creating a new disease entry<br><br>
        <p align="center">
-      <img src="src/main/resources/static/screens/creatingDisease.PNG" width="800" height="599"/>
+      <img src="src/main/resources/static/screens/create_disease.PNG" width="800" height="512"/>
       </p>
       <br>
     - medical appointments details list<br><br>
        <p align="center">
-      <img src="src/main/resources/static/screens/medicalAppointments.PNG" width="800" height="502"/>
+      <img src="src/main/resources/static/screens/medical_appointments.PNG" width="800" height="422"/>
       </p>
     <br>
     - creating a new appointment entry<br><br>
         <p align="center">
-      <img src="src/main/resources/static/screens/creatingAppointent.PNG" width="800" height="600"/>
+      <img src="src/main/resources/static/screens/create_appoitment.PNG" width="800" height="516"/>
       </p>
     <br>
     - vaccination schedule<br><br>
         <p align="center">
-      <img src="src/main/resources/static/screens/vaccinationShedule.PNG" width="800" height="730"/>
+      <img src="src/main/resources/static/screens/vaccinations.PNG" width="800" height="672"/>
       </p>
     <br>
     - statistics<br><br>
