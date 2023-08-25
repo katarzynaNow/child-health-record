@@ -1,7 +1,7 @@
 Katarzyna Noworyta
 # Child-Health-Record
 
-The application was created to keep a record of information related to the child’s health. Child Health Record includes information on diseases, medical visits, vaccinations and their statistics. It allows to collect infomation in an orderly manner and based on it, draw conclusions and notice regularities, which are an important source of knowledge. 
+The application was created to keep a record of information related to the child’s health. Child Health Record is designed to create a child profile which includes information on diseases, medical visits, vaccinations and their statistics. It allows to collect infomation in an orderly manner and based on it, draw conclusions and notice regularities, which are an important source of knowledge. 
 
 The register consists of the following parts:
 - <b>Disease Register</b> – it is used to enter data on the child’s ilness: type of disease, duration, symptoms. Disease Register also includes information wheather a medical visit was made in connection with a given ilness. Each entry in the register also has the functionality of editing or deleting data.
