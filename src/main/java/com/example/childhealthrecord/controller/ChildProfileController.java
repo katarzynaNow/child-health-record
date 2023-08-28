@@ -67,8 +67,7 @@ public class ChildProfileController {
             return "createProfile";
         }
 
-        newProfile.setPicture(file.getBytes());
-        childProfileService.saveChildProfileDtoToEntity(newProfile);
+        childProfileService.saveChildProfileDtoToEntity(newProfile, file);
         return "redirect:/profiles";
     }
 

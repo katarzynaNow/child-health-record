@@ -30,10 +30,10 @@ public class ChildProfileEntity {
     @Column(name = "picture")
     private byte[] picture;
 
-    @OneToMany(mappedBy = "child")
+    @OneToMany(mappedBy = "child", cascade = CascadeType.ALL)
     private List<DiseaseEntity> disease;
 
-    @OneToMany(mappedBy = "child")
+    @OneToMany(mappedBy = "child", cascade = CascadeType.ALL)
     private List<AppointmentEntity> appointment;
 
     @OneToMany(mappedBy = "child", cascade = CascadeType.ALL)

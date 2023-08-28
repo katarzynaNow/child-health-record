@@ -7,8 +7,11 @@ import com.example.childhealthrecord.entity.Vaccination;
 import com.example.childhealthrecord.mapper.ChildProfileMapper;
 import com.example.childhealthrecord.repository.ChildProfileRepository;
 import com.example.childhealthrecord.repository.VaccinationRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +31,6 @@ public class ChildProfileService {
         return childProfileRepository.findAll();
     }
 
-    public void save(ChildProfileEntity childProfile) {
-        childProfileRepository.save(childProfile);
-    }
-
     public ChildProfileEntity findById(Integer id) {
         return childProfileRepository.findById(id).get();
     }
@@ -40,7 +39,9 @@ public class ChildProfileService {
         childProfileRepository.deleteById(id);
     }
 
-    public void saveChildProfileDtoToEntity(ChildProfileDto childProfileDto){
+    @Transactional
+    public void saveChildProfileDtoToEntity(ChildProfileDto childProfileDto, MultipartFile file) throws IOException {
+        childProfileDto.setPicture(file.getBytes());
         ChildProfileEntity entity = childProfileRepository.save(ChildProfileMapper.toEntity(childProfileDto));
         List<Vaccination> list = new ArrayList<>();
         list.add(new Vaccination("mandatory", "Hepatitis B","0", VacStatus.TO_ARRANGE, "",  entity));
