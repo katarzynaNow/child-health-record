@@ -24,17 +24,9 @@ public class ChildProfileController {
     private String title;
 
     private final ChildProfileService childProfileService;
-    private final DiseaseService diseaseService;
 
-    private final AppointmentService appointmentService;
-
-    private final VaccinationService vaccinationService;
-
-    public ChildProfileController(ChildProfileService childProfileService, DiseaseService diseaseService, AppointmentService appointmentService, VaccinationService vaccinationService) {
+    public ChildProfileController(ChildProfileService childProfileService) {
         this.childProfileService = childProfileService;
-        this.diseaseService = diseaseService;
-        this.appointmentService = appointmentService;
-        this.vaccinationService = vaccinationService;
     }
 
     @GetMapping
@@ -83,6 +75,4 @@ public class ChildProfileController {
         childProfileService.deleteById(id);
         return "redirect:/profiles";
     }
-
-
 }

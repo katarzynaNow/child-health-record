@@ -83,8 +83,8 @@ public class DiseaseService {
     public int sickDaysInYear(int[] daysInMonthsSick ){
         int sickDaysInYear = 0;
 
-        for (int i = 0; i < daysInMonthsSick.length ; i++) {
-            sickDaysInYear += daysInMonthsSick[i];
+        for (int j : daysInMonthsSick) {
+            sickDaysInYear += j;
         }
         return sickDaysInYear;
     }

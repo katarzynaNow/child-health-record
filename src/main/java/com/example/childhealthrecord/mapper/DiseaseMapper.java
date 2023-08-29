@@ -4,7 +4,6 @@ import com.example.childhealthrecord.entity.DiseaseEntity;
 import com.example.childhealthrecord.dto.DiseaseDto;
 
 public class DiseaseMapper {
-
     public static DiseaseEntity toEntity(DiseaseDto model){
         DiseaseEntity entity = new DiseaseEntity();
         entity.setName(model.getName());

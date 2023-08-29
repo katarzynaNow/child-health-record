@@ -6,7 +6,6 @@ import com.example.childhealthrecord.entity.ChildProfileEntity;
 import com.example.childhealthrecord.entity.DiseaseEntity;
 
 public class ChildProfileMapper {
-
     public static ChildProfileEntity toEntity (ChildProfileDto model){
         ChildProfileEntity entity = new ChildProfileEntity();
         entity.setName(model.getName());

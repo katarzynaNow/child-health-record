@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Table(name = "vaccinations")
 @Getter
@@ -16,17 +14,23 @@ public class Vaccination {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Integer id;
 
+    @Column(name="scope")
     private String scope;
 
+    @Column(name="name")
     private String name;
 
+    @Column(name="child_age")
     private String childrenAgeInMonths;
 
     @Enumerated(EnumType.STRING)
+    @Column(name="status")
     private VacStatus status;
 
+    @Column(name="notes")
     private String notes;
 
     @ManyToOne

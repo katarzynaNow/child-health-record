@@ -4,7 +4,6 @@ import com.example.childhealthrecord.entity.AppointmentEntity;
 import com.example.childhealthrecord.dto.AppointmentDto;
 
 public class AppointmentMapper {
-
     public static AppointmentEntity toEntity(AppointmentDto model){
         AppointmentEntity entity = new AppointmentEntity();
         entity.setDate(model.getDate());

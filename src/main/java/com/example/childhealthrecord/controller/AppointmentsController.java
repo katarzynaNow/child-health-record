@@ -2,7 +2,6 @@ package com.example.childhealthrecord.controller;
 
 import com.example.childhealthrecord.entity.AppointmentEntity;
 import com.example.childhealthrecord.dto.AppointmentDto;
-import com.example.childhealthrecord.entity.DiseaseEntity;
 import com.example.childhealthrecord.service.AppointmentService;
 import com.example.childhealthrecord.service.ChildProfileService;
 import com.example.childhealthrecord.service.DiseaseService;

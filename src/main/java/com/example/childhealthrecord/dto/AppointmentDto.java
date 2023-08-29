@@ -19,7 +19,6 @@ public class AppointmentDto {
     @Size(min=2, max=30)
     private String medicines;
 
-
     private boolean antibiotic;
 
     @Size(max=200)
