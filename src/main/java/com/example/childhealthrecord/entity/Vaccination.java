@@ -23,7 +23,6 @@ public class Vaccination {
     @Column(name="name")
     private String name;
 
-    @Column(name="child_age")
     private String childrenAgeInMonths;
 
     @Enumerated(EnumType.STRING)
